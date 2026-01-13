@@ -32,15 +32,14 @@ function initRoom() {
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
 
+    // RESTRICTION TOTALE (Demande user) : ZOOM SEULEMENT
+    controls.enableRotate = false; // Bloque la rotation (clic gauche)
+    controls.enablePan = false;    // Bloque le déplacement latéral (clic droit)
+    controls.enableZoom = true;    // Autorise le zoom (molette)
+
     // Limites exacte issues de src/main.js
     controls.minDistance = 1; // MODIFIE : on autorise à se rapprocher plus (était à 5)
     controls.maxDistance = 45;
-
-    controls.minPolarAngle = 0;
-    controls.maxPolarAngle = Math.PI / 2;
-
-    controls.minAzimuthAngle = 0;
-    controls.maxAzimuthAngle = Math.PI / 2;
 
     // Lumières
     const light = new THREE.DirectionalLight(0xffffff, 2);
@@ -134,6 +133,10 @@ function initRoom() {
         const position = basePoint.add(direction.multiplyScalar(cameraZ));
 
         camera.position.copy(position);
+
+        // RESTRICTION ZOOM MAX (Demande user) :
+        // On ne peut pas dézoomer plus loin que la position de départ.
+        controls.maxDistance = cameraZ;
 
         controls.update();
         camera.updateProjectionMatrix();
