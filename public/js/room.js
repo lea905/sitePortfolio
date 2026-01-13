@@ -27,17 +27,20 @@ function initRoom() {
     renderer.outputColorSpace = THREE.SRGBColorSpace; // Important pour les couleurs
 
     // Contrôles
+    // Contrôles (Configuration EXACTE du site de référence)
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
-    controls.minDistance = 5;
+
+    // Limites exacte issues de src/main.js
+    controls.minDistance = 1; // MODIFIE : on autorise à se rapprocher plus (était à 5)
     controls.maxDistance = 45;
 
-    // Limites de rotation (comme sur le site de ref)
     controls.minPolarAngle = 0;
-    controls.maxPolarAngle = Math.PI / 2; // Bloque la vue pour ne pas aller sous le sol
+    controls.maxPolarAngle = Math.PI / 2;
+
     controls.minAzimuthAngle = 0;
-    controls.maxAzimuthAngle = Math.PI / 2; // Bloque la rotation horizontale (quart de tour)
+    controls.maxAzimuthAngle = Math.PI / 2;
 
     // Lumières
     const light = new THREE.DirectionalLight(0xffffff, 2);
@@ -112,11 +115,12 @@ function initRoom() {
 
         // CORRECTION ZOOM "BOURRIN"
         // Le cadre rouge est ~4x plus grand que la chambre.
-        // Donc on divise la distance par 3.5 pour se rapprocher fortement.
-        cameraZ = cameraZ / 3.5;
+        // Donc on divise la distance par 4.5 pour se rapprocher encore plus (demande user)
+        cameraZ = cameraZ / 4.5;
 
         // C. Positionnement caméra
-        const direction = new THREE.Vector3(1, 0.8, 1).normalize();
+        // On baisse un peu la hauteur (Y) pour "descendre" comme demandé (0.8 -> 0.6)
+        const direction = new THREE.Vector3(1, 0.6, 1).normalize();
 
         // Si finalCenter est NaN (problème modèle), on fallback sur 0,0,0
         const safeCenter = (Number.isNaN(finalCenter.x)) ? new THREE.Vector3(0, 0, 0) : finalCenter;
