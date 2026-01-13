@@ -108,6 +108,11 @@ function initRoom() {
         // A. On vise le centre réel du modèle
         controls.target.copy(finalCenter);
 
+        // CORRECTION CENTRAGE VERTICAL :
+        // Le modèle paraît trop bas. Pour le remonter visuellement, on descend la cible (target).
+        // -2 était trop fort (ça collait au plafond). On tente -0.5.
+        controls.target.y -= 0.5;
+
         // B. Calcul distance caméra
         const visualSize = Math.max(finalSize.x, finalSize.y, finalSize.z);
         const fov = camera.fov * (Math.PI / 180);
@@ -123,9 +128,10 @@ function initRoom() {
         const direction = new THREE.Vector3(1, 0.6, 1).normalize();
 
         // Si finalCenter est NaN (problème modèle), on fallback sur 0,0,0
-        const safeCenter = (Number.isNaN(finalCenter.x)) ? new THREE.Vector3(0, 0, 0) : finalCenter;
+        // IMPORTANT : On se positionne par rapport à la CIBLE (target) modifiée, pas juste le centre géométrique
+        const basePoint = controls.target.clone();
 
-        const position = safeCenter.clone().add(direction.multiplyScalar(cameraZ));
+        const position = basePoint.add(direction.multiplyScalar(cameraZ));
 
         camera.position.copy(position);
 
