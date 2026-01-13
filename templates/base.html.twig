@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Portfolio | Léa Barnezet{% endblock %}</title>
+        <link rel="shortcut icon" href="{{ asset('img/barre_des_tâche.png') }}" />
+        
+        {% block stylesheets %}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ importmap('app') }}
+        {% endblock %}
+    </head>
+    <body id="{% block body_id %}fond{% endblock %}">
+        <div class="loader"></div>
+
+        <header>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <nav id="menu">
+                <ul>
+                    <li><a class="{{ app.request.attributes.get('_route') == 'app_home' ? 'actuelle' : '' }}" href="{{ path('app_home') }}">Accueil</a></li>
+                    <li><a class="{{ app.request.attributes.get('_route') == 'app_competences' ? 'actuelle' : '' }}" href="{{ path('app_competences') }}">Compétences</a></li>
+                    <li><a class="{{ app.request.attributes.get('_route') == 'app_project' ? 'actuelle' : '' }}" href="{{ path('app_project') }}">Projets</a></li>
+                    <li><a href="{{ asset('cv_FR.pdf') }}" target="_blank">CV</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        {% block body %}{% endblock %}
+
+        <footer>
+            <ul>
+                <li>
+                    <p>Email : Barnezet905@gmail.com</p>
+                </li>
+                <li><a id="linkedin" href="https://www.linkedin.com/in/léa-barnezet-333aa8267/" target="_blank">Linkedin</a>
+                </li>
+                <li>
+                    <p>©2023-2025 Léa Barnezet</p>
+                </li>
+                <li>
+                    <img id="logo_footer" src="{{ asset('img/logo.png') }}" alt="mon logo">
+                </li>
+            </ul>
+        </footer>
+    </body>
+</html>

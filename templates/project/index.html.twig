@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Projets | Léa Barnezet{% endblock %}
+
+{% block body_id %}body_projet{% endblock %}
+
+{% block body %}
+<main id="main_projet">
+    <h1>Projets</h1>
+    <div class="gallery">
+        {% for project in projects %}
+        <div class="projet">
+            <button class="accordion">
+                {{ project.title }}
+                <img src="{{ asset('img/fleche-droite.png') }}" alt="flèche" class="arrow-icon">
+            </button>
+            <div class="panel">
+                {% if project.link %}
+                <a href="{{ project.link }}" target="_blank">
+                {% else %}
+                <a>
+                {% endif %}
+                    {% if project.image %}
+                        <img src="{{ project.image }}" alt="{{ project.title }}" class="img-vitrine">
+                    {% endif %}
+                </a>
+                <p>{{ project.description|nl2br }}</p>
+            </div>
+        </div>
+        {% else %}
+            <p>Aucun projet pour le moment.</p>
+        {% endfor %}
+
+    </div>
+</main>
+{% endblock %}

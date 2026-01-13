@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Portfolio | Léa Barnezet{% endblock %}
+{% block body_id %}fond{% endblock %}
+
+{% block body %}
+    <main id="main_accueil">
+        <div id="hero-3d-wrapper">
+            <canvas id="roomCanvas"></canvas>
+        </div>
+    </main>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="module" src="{{ asset('js/room.js') }}"></script>
+{% endblock %}
