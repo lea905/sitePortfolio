@@ -35,19 +35,4 @@ return [
         'version' => '5.3.8',
         'type' => 'css',
     ],
-    'three' => [
-        'version' => '0.182.0',
-    ],
-    'three/examples/jsm/loaders/GLTFLoader.js' => [
-        'version' => '0.182.0',
-    ],
-    'three/examples/jsm/controls/OrbitControls.js' => [
-        'version' => '0.182.0',
-    ],
-    'three/examples/jsm/lights/RectAreaLightUniformsLib.js' => [
-        'version' => '0.182.0',
-    ],
-    'three/examples/jsm/loaders/DRACOLoader.js' => [
-        'version' => '0.182.0',
-    ],
 ];

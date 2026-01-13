@@ -463,20 +463,3 @@ svg circle:nth-child(2) {
 /*Fin Projet*/
 
 /*----------------------------------------------------*/
-
-
-/*!*----------------------------------------------------*!*/
-
-#hero-3d-wrapper {
-    width: 100%;
-    height: 85vh;
-    /* Plus grand */
-    position: relative;
-    z-index: 10;
-}
-
-#roomCanvas {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
