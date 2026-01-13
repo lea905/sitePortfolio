@@ -48,9 +48,8 @@ class SecurityControllerAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        // For example:
-        // return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        // Redirect to the admin dashboard (project index) after successful login
+        return new RedirectResponse($this->urlGenerator->generate('app_admin_project_index'));
     }
 
     protected function getLoginUrl(Request $request): string

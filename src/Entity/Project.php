@@ -26,6 +26,9 @@ class Project
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $link = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $technologies = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Project
     public function setLink(?string $link): static
     {
         $this->link = $link;
+
+        return $this;
+    }
+
+    public function getTechnologies(): ?string
+    {
+        return $this->technologies;
+    }
+
+    public function setTechnologies(?string $technologies): static
+    {
+        $this->technologies = $technologies;
 
         return $this;
     }

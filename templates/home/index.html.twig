@@ -1,13 +1,219 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Portfolio | Léa Barnezet{% endblock %}
-{% block body_id %}fond{% endblock %}
-
 {% block body %}
-    <main id="main_accueil">
-        <div id="hero-section">
-             <!-- Placeholder for content if needed, or just clean -->
+    <!-- HERO SECTION -->
+    <section id="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <p class="hero-subtitle">Bonjour, je suis Léa Barnezet</p>
+                <h1>Développeuse Full Stack <br> <span style="color: var(--accent);">Symfony & JavaScript</span></h1>
+                <p class="hero-description" style="max-width: 600px; margin: 0 auto 2rem; color: var(--text-muted);">
+                    Je conçois des applications web robustes et modernes. Actuellement à la recherche d'un CDI en région parisienne ou en remote.
+                </p>
+                <div class="hero-actions">
+                    <a href="#projets" class="btn btn-primary">Voir mes projets</a>
+                    <a href="{{ asset('cv_FR.pdf') }}" target="_blank" class="btn btn-outline">Télécharger mon CV</a>
+                </div>
+            </div>
         </div>
-    </main>
-{% endblock %}
+    </section>
 
+    <!-- SKILLS SECTION -->
+    <section id="competences" class="section-padding">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 3rem;">Mes Compétences</h2>
+
+            <div class="skills-category">
+                <h3>Languages Informatiques</h3>
+                <div class="skills-grid-circles">
+                    <div class="skill-circle" data-percent="85">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="fg" cx="50" cy="50" r="45" style="--percent: 85"></circle>
+                        </svg>
+                        <div class="inner-text">
+                            <span class="percent">85%</span>
+                            <span class="label">HTML</span>
+                        </div>
+                    </div>
+                    <div class="skill-circle" data-percent="75">
+                         <svg viewBox="0 0 100 100">
+                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="fg" cx="50" cy="50" r="45" style="--percent: 75"></circle>
+                        </svg>
+                        <div class="inner-text">
+                            <span class="percent">75%</span>
+                            <span class="label">CSS</span>
+                        </div>
+                    </div>
+                     <div class="skill-circle" data-percent="40">
+                         <svg viewBox="0 0 100 100">
+                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="fg" cx="50" cy="50" r="45" style="--percent: 40"></circle>
+                        </svg>
+                        <div class="inner-text">
+                            <span class="percent">40%</span>
+                            <span class="label">JS</span>
+                        </div>
+                    </div>
+                     <div class="skill-circle" data-percent="75">
+                         <svg viewBox="0 0 100 100">
+                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="fg" cx="50" cy="50" r="45" style="--percent: 75"></circle>
+                        </svg>
+                        <div class="inner-text">
+                            <span class="percent">75%</span>
+                            <span class="label">PHP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-category">
+                <h3>Frameworks</h3>
+                <div class="skills-grid-circles">
+                     <div class="skill-circle" data-percent="30">
+                         <svg viewBox="0 0 100 100">
+                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="fg" cx="50" cy="50" r="45" style="--percent: 30"></circle>
+                        </svg>
+                        <div class="inner-text">
+                            <span class="percent">30%</span>
+                            <span class="label">Symfony</span>
+                        </div>
+                    </div>
+                    <div class="skill-circle" data-percent="30">
+                         <svg viewBox="0 0 100 100">
+                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="fg" cx="50" cy="50" r="45" style="--percent: 30"></circle>
+                        </svg>
+                        <div class="inner-text">
+                            <span class="percent">30%</span>
+                            <span class="label">Node.js</span>
+                        </div>
+                    </div>
+                     <div class="skill-circle" data-percent="50">
+                         <svg viewBox="0 0 100 100">
+                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="fg" cx="50" cy="50" r="45" style="--percent: 50"></circle>
+                        </svg>
+                        <div class="inner-text">
+                            <span class="percent">50%</span>
+                            <span class="label">Flutter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="skills-category">
+                <h3>Outils & Système</h3>
+                <div class="skills-grid-circles">
+                     <div class="skill-circle" data-percent="70">
+                         <svg viewBox="0 0 100 100">
+                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="fg" cx="50" cy="50" r="45" style="--percent: 70"></circle>
+                        </svg>
+                        <div class="inner-text">
+                            <span class="percent">70%</span>
+                            <span class="label">Linux</span>
+                        </div>
+                    </div>
+                    <div class="skill-circle" data-percent="50">
+                         <svg viewBox="0 0 100 100">
+                            <circle class="bg" cx="50" cy="50" r="45"></circle>
+                            <circle class="fg" cx="50" cy="50" r="45" style="--percent: 50"></circle>
+                        </svg>
+                        <div class="inner-text">
+                            <span class="percent">50%</span>
+                            <span class="label">SQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="{{ path('app_competences') }}" class="btn btn-outline">Voir toutes mes compétences &rarr;</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projets" class="section-padding" style="background-color: #080c1f;">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 3rem;">Projets Récents</h2>
+
+            <div class="projects-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem;">
+
+                <!-- Projet 1 -->
+                <article class="project-card" style="background: var(--bg-body); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); transition: transform 0.3s ease;">
+                    <div class="project-image" style="height: 200px; background-color: #2d2d2d; display: flex; align-items: center; justify-content: center;">
+                        <!-- Placeholder Image -->
+                        <span style="color: var(--text-muted);">Image Projet</span>
+                    </div>
+                    <div class="project-content" style="padding: 1.5rem;">
+                        <div class="project-tags" style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                            <span style="font-size: 0.8rem; padding: 0.2rem 0.6rem; background: rgba(168, 85, 247, 0.1); color: var(--accent); border-radius: 4px;">Symfony</span>
+                            <span style="font-size: 0.8rem; padding: 0.2rem 0.6rem; background: rgba(168, 85, 247, 0.1); color: var(--accent); border-radius: 4px;">React</span>
+                        </div>
+                        <h3 style="margin-bottom: 0.5rem;">Nom du Projet</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+                            Une brève description du projet, des problématiques résolues et de la valeur ajoutée technique.
+                        </p>
+                        <a href="#" style="color: var(--text-main); font-weight: 500; font-size: 0.9rem; text-decoration: underline;">Voir sur GitHub &rarr;</a>
+                    </div>
+                </article>
+
+                <!-- Projet 2 (Exemple) -->
+                <article class="project-card" style="background: var(--bg-body); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); transition: transform 0.3s ease;">
+                    <div class="project-image" style="height: 200px; background-color: #2d2d2d; display: flex; align-items: center; justify-content: center;">
+                        <span style="color: var(--text-muted);">Image Projet</span>
+                    </div>
+                    <div class="project-content" style="padding: 1.5rem;">
+                         <div class="project-tags" style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                            <span style="font-size: 0.8rem; padding: 0.2rem 0.6rem; background: rgba(168, 85, 247, 0.1); color: var(--accent); border-radius: 4px;">API Platform</span>
+                            <span style="font-size: 0.8rem; padding: 0.2rem 0.6rem; background: rgba(168, 85, 247, 0.1); color: var(--accent); border-radius: 4px;">Docker</span>
+                        </div>
+                        <h3 style="margin-bottom: 0.5rem;">Autre Projet</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+                            Description concise du projet. Intégration d'API tierces, gestion de base de données complexe, etc.
+                        </p>
+                        <a href="#" style="color: var(--text-main); font-weight: 500; font-size: 0.9rem; text-decoration: underline;">Voir la démo &rarr;</a>
+                    </div>
+                </article>
+
+                 <!-- Projet 3 (Exemple) -->
+                <article class="project-card" style="background: var(--bg-body); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); transition: transform 0.3s ease;">
+                    <div class="project-image" style="height: 200px; background-color: #2d2d2d; display: flex; align-items: center; justify-content: center;">
+                        <span style="color: var(--text-muted);">Image Projet</span>
+                    </div>
+                    <div class="project-content" style="padding: 1.5rem;">
+                        <div class="project-tags" style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                            <span style="font-size: 0.8rem; padding: 0.2rem 0.6rem; background: rgba(168, 85, 247, 0.1); color: var(--accent); border-radius: 4px;">JS</span>
+                            <span style="font-size: 0.8rem; padding: 0.2rem 0.6rem; background: rgba(168, 85, 247, 0.1); color: var(--accent); border-radius: 4px;">Three.js</span>
+                        </div>
+                        <h3 style="margin-bottom: 0.5rem;">Portfolio 3D</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+                            Expérience immersive 3D (version précédente) démontrant la maîtrise des bibliothèques graphiques WebGL.
+                        </p>
+                        <a href="#" style="color: var(--text-main); font-weight: 500; font-size: 0.9rem; text-decoration: underline;">Voir le code &rarr;</a>
+                    </div>
+                </article>
+
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="{{ path('app_project') }}" class="btn btn-outline">Voir tous les projets &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT / FOOTER CALLOUT -->
+    <section id="contact" class="section-padding" style="text-align: center;">
+        <div class="container">
+            <h2 style="margin-bottom: 1rem;">Prêt à collaborer ?</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Je suis disponible pour discuter de vos projets ou d'opportunités de carrière.</p>
+            <a href="mailto:Barnezet905@gmail.com" class="btn btn-primary">Me Contacter</a>
+        </div>
+    </section>
+{% endblock %}

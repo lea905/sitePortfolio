@@ -3,39 +3,61 @@
 {% block title %}Project index{% endblock %}
 
 {% block body %}
-    <h1>Project index</h1>
+    <section class="section-padding" style="padding-top: 120px; min-height: 100vh;">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h1 style="margin: 0; font-size: 2rem;">Gestion des Projets</h1>
+                <a href="{{ path('app_admin_project_new') }}" class="btn btn-primary">
+                    + Nouveau Projet
+                </a>
+            </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Image</th>
-                <th>Link</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for project in projects %}
-            <tr>
-                <td>{{ project.id }}</td>
-                <td>{{ project.title }}</td>
-                <td>{{ project.description }}</td>
-                <td>{{ project.image }}</td>
-                <td>{{ project.link }}</td>
-                <td>
-                    <a href="{{ path('app_admin_project_show', {'id': project.id}) }}">show</a>
-                    <a href="{{ path('app_admin_project_edit', {'id': project.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_admin_project_new') }}">Create new</a>
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="width: 80px;">ID</th>
+                            <th>Titre</th>
+                            <th>Description</th>
+                            <th style="width: 150px;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for project in projects %}
+                        <tr>
+                            <td><span class="badge-id">#{{ project.id }}</span></td>
+                            <td>
+                                <div style="font-weight: 600;">{{ project.title }}</div>
+                                {% if project.link %}
+                                    <a href="{{ project.link }}" target="_blank" style="font-size: 0.8rem; color: var(--text-muted); text-decoration: underline;">Voir le lien</a>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <div style="max-width: 400px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text-muted);">
+                                    {{ project.description }}
+                                </div>
+                            </td>
+                            <td>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <a href="{{ path('app_admin_project_show', {'id': project.id}) }}" class="action-btn" title="Voir">
+                                        👁️
+                                    </a>
+                                    <a href="{{ path('app_admin_project_edit', {'id': project.id}) }}" class="action-btn" title="Modifier">
+                                        ✏️
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4" style="text-align: center; padding: 3rem; color: var(--text-muted);">
+                                Aucun projet trouvé. Commencez par en créer un !
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
 {% endblock %}

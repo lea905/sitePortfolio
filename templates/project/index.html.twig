@@ -2,35 +2,49 @@
 
 {% block title %}Projets | Léa Barnezet{% endblock %}
 
-{% block body_id %}body_projet{% endblock %}
-
 {% block body %}
-<main id="main_projet">
-    <h1>Projets</h1>
-    <div class="gallery">
-        {% for project in projects %}
-        <div class="projet">
-            <button class="accordion">
-                {{ project.title }}
-                <img src="{{ asset('img/fleche-droite.png') }}" alt="flèche" class="arrow-icon">
-            </button>
-            <div class="panel">
-                {% if project.link %}
-                <a href="{{ project.link }}" target="_blank">
+    <section class="section-padding" style="padding-top: 120px; min-height: 100vh; background-color: #080c1f;">
+        <div class="container">
+            <h1 class="section-title" style="text-align: center; margin-bottom: 4rem; font-size: 2.5rem;">Tous mes Projets</h1>
+
+            <div class="projects-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem;">
+                {% for project in projects %}
+                    <article class="project-card" style="background: var(--bg-card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); transition: transform 0.3s ease; display: flex; flex-direction: column;">
+                        <div class="project-image" style="height: 200px; overflow: hidden; background-color: #1a1f35; position: relative;">
+                            {% if project.image %}
+                                <img src="{{ project.image }}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                            {% else %}
+                                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                    <span style="color: var(--text-muted);">Image non disponible</span>
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="project-content" style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column;">
+                            <div class="project-tags" style="margin-bottom: 0.8rem;">
+                                {% if project.technologies %}
+                                    {% for tech in project.technologies|split(',') %}
+                                        <span class="tech-badge">{{ tech|trim }}</span>
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+
+                            <h3 style="margin-bottom: 0.5rem; color: var(--text-main);">{{ project.title }}</h3>
+                            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">
+                                {{ project.description|nl2br }}
+                            </p>
+                            
+                            {% if project.link %}
+                                <a href="{{ project.link }}" target="_blank" style="color: var(--accent); font-weight: 500; font-size: 0.9rem; margin-top: auto; display: inline-flex; align-items: center; gap: 0.5rem;">
+                                    Voir le projet &rarr;
+                                </a>
+                            {% endif %}
+                        </div>
+                    </article>
                 {% else %}
-                <a>
-                {% endif %}
-                    {% if project.image %}
-                        <img src="{{ project.image }}" alt="{{ project.title }}" class="img-vitrine">
-                    {% endif %}
-                </a>
-                <p>{{ project.description|nl2br }}</p>
+                    <p style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">Aucun projet pour le moment.</p>
+                {% endfor %}
             </div>
         </div>
-        {% else %}
-            <p>Aucun projet pour le moment.</p>
-        {% endfor %}
-
-    </div>
-</main>
+    </section>
 {% endblock %}

@@ -16,6 +16,10 @@ class ProjectType extends AbstractType
             ->add('description')
             ->add('image')
             ->add('link')
+            ->add('technologies', null, [
+                'label' => 'Technologies (séparées par des virgules)',
+                'attr' => ['placeholder' => 'ex: Symfony, React, Docker']
+            ])
         ;
     }
 

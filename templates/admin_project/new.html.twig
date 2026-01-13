@@ -3,9 +3,15 @@
 {% block title %}New Project{% endblock %}
 
 {% block body %}
-    <h1>Create new Project</h1>
+    <section class="min-vh-100 d-flex align-items-center justify-content-center" style="padding-top: 120px; padding-bottom: 3rem; display: flex; justify-content: center;">
+        <div class="glass-card" style="width: 100%; max-width: 600px; padding: 2.5rem;">
+            <h1 style="text-align: center; margin-bottom: 2rem;">Nouveau Projet</h1>
 
-    {{ include('admin_project/_form.html.twig') }}
+            {{ include('admin_project/_form.html.twig') }}
 
-    <a href="{{ path('app_admin_project_index') }}">back to list</a>
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <a href="{{ path('app_admin_project_index') }}" style="color: var(--text-muted); text-decoration: underline;">Retour à la liste</a>
+            </div>
+        </div>
+    </section>
 {% endblock %}

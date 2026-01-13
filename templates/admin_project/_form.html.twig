@@ -1,4 +1,33 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div style="margin-bottom: 1.5rem;">
+        {{ form_label(form.title, 'Titre du projet', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+        <div style="color: #fca5a5; font-size: 0.85rem; margin-top: 0.5rem;">{{ form_errors(form.title) }}</div>
+    </div>
+
+    <div style="margin-bottom: 1.5rem;">
+        {{ form_label(form.description, 'Description', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.description, {'attr': {'class': 'form-control', 'rows': '5'}}) }}
+        <div style="color: #fca5a5; font-size: 0.85rem; margin-top: 0.5rem;">{{ form_errors(form.description) }}</div>
+    </div>
+
+    <div style="margin-bottom: 1.5rem;">
+        {{ form_label(form.technologies, 'Technologies (ex: Symfony, React)', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.technologies, {'attr': {'class': 'form-control', 'placeholder': 'Symfony, React, Docker'}}) }}
+        <div style="color: #fca5a5; font-size: 0.85rem; margin-top: 0.5rem;">{{ form_errors(form.technologies) }}</div>
+    </div>
+
+    <div style="margin-bottom: 1.5rem;">
+        {{ form_label(form.image, 'URL Image (ex: /img/projet1.jpg ou https://...)', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
+        <div style="color: #fca5a5; font-size: 0.85rem; margin-top: 0.5rem;">{{ form_errors(form.image) }}</div>
+    </div>
+
+    <div style="margin-bottom: 1.5rem;">
+        {{ form_label(form.link, 'Lien (facultatif)', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.link, {'attr': {'class': 'form-control'}}) }}
+        <div style="color: #fca5a5; font-size: 0.85rem; margin-top: 0.5rem;">{{ form_errors(form.link) }}</div>
+    </div>
+
+    <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">{{ button_label|default('Sauvegarder') }}</button>
 {{ form_end(form) }}
