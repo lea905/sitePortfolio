@@ -19,7 +19,7 @@
                                 </div>
                             {% endif %}
                         </div>
-                        
+
                         <div class="project-content" style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column;">
                             <div class="project-tags" style="margin-bottom: 0.8rem;">
                                 {% if project.technologies %}
@@ -29,11 +29,17 @@
                                 {% endif %}
                             </div>
 
+                            <div style="margin-bottom: 0.8rem;">
+                                {% if project.duration %}
+                                        <span class="duration-badge">{{ project.duration }}</span>
+                                {% endif %}
+                            </div>
+
                             <h3 style="margin-bottom: 0.5rem; color: var(--text-main);">{{ project.title }}</h3>
                             <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">
                                 {{ project.description|nl2br }}
                             </p>
-                            
+
                             {% if project.link %}
                                 <a href="{{ project.link }}" target="_blank" style="color: var(--accent); font-weight: 500; font-size: 0.9rem; margin-top: auto; display: inline-flex; align-items: center; gap: 0.5rem;">
                                     Voir le projet &rarr;

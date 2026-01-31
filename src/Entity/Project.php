@@ -29,6 +29,9 @@ class Project
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $technologies = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $duration = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +93,18 @@ class Project
     public function setTechnologies(?string $technologies): static
     {
         $this->technologies = $technologies;
+
+        return $this;
+    }
+
+    public function getDuration(): ?string
+    {
+        return $this->duration;
+    }
+
+    public function setDuration(?string $duration): static
+    {
+        $this->duration = $duration;
 
         return $this;
     }

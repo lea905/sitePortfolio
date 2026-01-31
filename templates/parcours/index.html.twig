@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Parcours | Léa Barnezet{% endblock %}
+
+{% block body %}
+    <section class="section-padding" style="padding-top: 120px; min-height: 100vh;">
+        <div class="container">
+            <h1 class="section-title" style="text-align: center; margin-bottom: 4rem; font-size: 2.5rem;">Mon Parcours</h1>
+
+            <div class="timeline">
+                {% for exp in experiences %}
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">{{ exp.date }}</div>
+                        <div class="timeline-content glass-card">
+                            <h3>{{ exp.title }}</h3>
+                            <h4 style="color: var(--accent); margin-bottom: 1rem;">{{ exp.company }}, {{ exp.type }}</h4>
+                            <p style="color: var(--text-muted); font-size: 0.95rem;">{{ exp.description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

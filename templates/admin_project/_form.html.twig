@@ -18,6 +18,12 @@
     </div>
 
     <div style="margin-bottom: 1.5rem;">
+        {{ form_label(form.duration, 'Durée', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.duration, {'attr': {'class': 'form-control'}}) }}
+        <div style="color: #fca5a5; font-size: 0.85rem; margin-top: 0.5rem;">{{ form_errors(form.duration) }}</div>
+    </div>
+
+    <div style="margin-bottom: 1.5rem;">
         {{ form_label(form.image, 'URL Image (ex: /img/projet1.jpg ou https://...)', {'label_attr': {'class': 'form-label'}}) }}
         {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
         <div style="color: #fca5a5; font-size: 0.85rem; margin-top: 0.5rem;">{{ form_errors(form.image) }}</div>

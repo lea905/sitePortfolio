@@ -18,6 +18,11 @@
     /* Violet Hover */
     --border-color: rgba(255, 255, 255, 0.1);
 
+    --bg-alt: #080c1f;
+    /* Default Dark Alt Background */
+    --bg-footer: #03050e;
+    /* Default Dark Footer */
+
     /* --- FONTS --- */
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
@@ -346,9 +351,23 @@ header nav {
     font-weight: 500;
 }
 
+/* --- BADGES (Projects duration) --- */
+.duration-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+    background: rgba(135, 143, 156, 0.15);
+    color: var(--text-muted);
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+
 /* --- FOOTER --- */
 footer {
-    background-color: #03050e;
+    background-color: var(--bg-footer);
     /* Even darker than body */
     border-top: 1px solid var(--border-color);
     padding: 3rem 0;
@@ -400,4 +419,244 @@ footer .container {
 
 .socials a:hover::after {
     width: 100%;
+}
+
+/* --- BACKGROUND ANIMATION --- */
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: var(--bg-body);
+}
+
+
+/* --- SKILLS REDESIGN --- */
+.skill-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+    filter: grayscale(100%) opacity(0.7);
+    min-width: 140px;
+}
+
+.skill-card .skill-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--text-main);
+    transition: color 0.3s ease;
+}
+
+.skill-card:hover {
+    filter: grayscale(0%) opacity(1);
+    transform: translateY(-5px);
+    border-color: var(--skill-color);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px var(--glow-color, rgba(255, 255, 255, 0.1));
+}
+
+.skill-card:hover .skill-name {
+    color: var(--skill-color);
+    text-shadow: 0 0 10px var(--skill-color);
+}
+
+
+/* --- TIMELINE --- */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, var(--accent), transparent);
+    transform: translateX(-50%);
+    box-shadow: 0 0 15px var(--accent);
+}
+
+.timeline-item {
+    position: relative;
+    width: 100%;
+    margin-bottom: 4rem;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    margin-left: auto;
+    margin-right: 50px;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    margin-left: 50px;
+}
+
+.timeline-item:nth-child(odd) {
+    text-align: right;
+    padding-right: 50%;
+}
+
+.timeline-item:nth-child(even) {
+    text-align: left;
+    padding-left: 50%;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    background: var(--bg-body);
+    border: 3px solid var(--accent);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    box-shadow: 0 0 10px var(--accent);
+}
+
+.timeline-date {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--bg-card);
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    font-size: 0.9rem;
+}
+
+.timeline-content {
+    padding: 1.5rem;
+    position: relative;
+    width: 90%;
+    /* Adjust for mobile logic later */
+}
+
+/* Render fix for text alignment inside card reset */
+.timeline-content h3,
+.timeline-content h4,
+.timeline-content p {
+    text-align: left;
+}
+
+
+/* --- LIGHT MODE --- */
+:root[data-theme="light"] {
+    /* Harmonized Light Palette (Warmer & Richer) */
+    --bg-body: #fafafa;
+    /* Warm Off-White */
+    --bg-card: #ffffff;
+    /* Pure White */
+    --bg-nav: #ffffff;
+    /* Solid White */
+    --text-main: #27272a;
+    /* Zinc 800 */
+    --text-muted: #71717a;
+    /* Zinc 500 */
+    --border-color: rgba(0, 0, 0, 0.06);
+    --skill-card-bg: #ffffff;
+
+    /* Override Accent for better contrast on white */
+    --accent: #7e22ce;
+    /* Rich Violet */
+    --accent-hover: #9333ea;
+
+    --bg-alt: #f1f5f9;
+    /* Slate 100 for Light Mode Alt Sections */
+
+    --bg-footer: #ffffff;
+}
+
+/* Enhancements for Light Mode Card Depth */
+:root[data-theme="light"] .glass-card,
+:root[data-theme="light"] .project-card,
+:root[data-theme="light"] .skill-card {
+    background: #ffffff !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    /* Softer shadows */
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+:root[data-theme="light"] .skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+}
+
+/* --- THEME TOGGLE --- */
+.theme-toggle-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.theme-toggle {
+    opacity: 0;
+    position: absolute;
+}
+
+.theme-toggle-label {
+    background-color: #111;
+    width: 50px;
+    height: 26px;
+    border-radius: 50px;
+    position: relative;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--border-color);
+}
+
+.theme-toggle-label .fa-moon {
+    color: #f1c40f;
+    font-size: 14px;
+}
+
+.theme-toggle-label .fa-sun {
+    color: #f39c12;
+    font-size: 14px;
+}
+
+.theme-toggle-ball {
+    background-color: #fff;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    border-radius: 50%;
+    transition: transform 0.2s linear;
+}
+
+.theme-toggle:checked+.theme-toggle-label .theme-toggle-ball {
+    transform: translateX(24px);
+}
+
+/* Explicitly hide canvas in light mode if desired, or let it adapt */
+:root[data-theme="light"] #canvas-container {
+    opacity: 0.2;
+    /* Make particles subtle in light mode */
+    filter: invert(1);
+    /* Invert particles to be dark on light bg */
 }

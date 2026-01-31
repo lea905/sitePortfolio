@@ -20,6 +20,7 @@ class ProjectType extends AbstractType
                 'label' => 'Technologies (séparées par des virgules)',
                 'attr' => ['placeholder' => 'ex: Symfony, React, Docker']
             ])
+            ->add('duration')
         ;
     }
 

@@ -10,6 +10,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
         {% block stylesheets %}
             {{ importmap('app') }}
@@ -19,15 +20,26 @@
             {{ importmap('app') }}
         {% endblock %}
     </head>
-    <body>
+    <body data-controller="theme">
+        <div id="canvas-container" data-controller="particle-background"></div>
         <header>
             <div class="container">
                 <nav>
                     <div class="nav-links">
                         <a href="{{ path('app_home') }}" class="{{ app.request.attributes.get('_route') == 'app_home' ? 'active' : '' }}">Accueil</a>
-                        <a href="{{ path('app_project') }}">Projets</a>
-                        <a href="{{ path('app_competences') }}">Stack</a>
+                        <a href="{{ path('app_project') }}" class="{{ app.request.attributes.get('_route') == 'app_project' ? 'active' : '' }}">Projets</a>
+                        <a href="{{ path('app_competences') }}" class="{{ app.request.attributes.get('_route') == 'app_competences' ? 'active' : '' }}">Stack</a>
+                        <a href="{{ path('app_parcours') }}" class="{{ app.request.attributes.get('_route') == 'app_parcours' ? 'active' : '' }}">Parcours</a>
                         <a href="{{ asset('cv_FR.pdf') }}" target="_blank" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.9rem;">CV</a>
+                        
+                        <div class="theme-toggle-wrapper">
+                            <input type="checkbox" class="theme-toggle" id="chk" data-action="change->theme#toggle">
+                            <label class="theme-toggle-label" for="chk">
+                                <i class="fas fa-moon"></i>
+                                <i class="fas fa-sun"></i>
+                                <div class="theme-toggle-ball"></div>
+                            </label>
+                        </div>
                     </div>
                 </nav>
             </div>
@@ -37,9 +49,9 @@
 
         <footer>
             <div class="container">
-                <p class="copyright">© 2025 Léa Barnezet - Développeuse Full Stack</p>
+                <p class="copyright">© 2023-2026 Léa Barnezet - Développeuse Full Stack</p>
                 <div class="socials">
-                    <a href="https://github.com/lea905" target="_blank">GitHub</a>
+{#                    <a href="https://github.com/lea905" target="_blank">GitHub</a>#}
                     <a href="https://www.linkedin.com/in/léa-barnezet-333aa8267/" target="_blank">LinkedIn</a>
                     <a href="mailto:Barnezet905@gmail.com">Email</a>
                 </div>
