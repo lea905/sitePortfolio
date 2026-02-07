@@ -24,13 +24,16 @@ services:
     Symfony\Component\Security\Csrf\CsrfTokenManagerInterface:
         alias: 'Symfony\Component\Security\Csrf\CsrfTokenManager'
     
-    Symfony\Component\Security\Csrf\CsrfTokenManager:
-        class: Symfony\Component\Security\Csrf\CsrfTokenManager
-        arguments: ['@Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface', '@Symfony\Component\Security\Csrf\TokenStorage\TokenStorageInterface']
-
     Symfony\Component\Security\Csrf\TokenStorage\TokenStorageInterface:
         class: Symfony\Component\Security\Csrf\TokenStorage\SessionTokenStorage
         arguments: ['@request_stack']
+
+    Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface:
+        class: Symfony\Component\Security\Csrf\TokenGenerator\UriSafeTokenGenerator
+
+    Symfony\Component\Security\Csrf\CsrfTokenManager:
+        class: Symfony\Component\Security\Csrf\CsrfTokenManager
+        arguments: ['@Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface', '@Symfony\Component\Security\Csrf\TokenStorage\TokenStorageInterface']
 
     security.csrf.token_manager:
         alias: 'Symfony\Component\Security\Csrf\CsrfTokenManager'

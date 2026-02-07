@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container" style="padding-top: 100px;">
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label == 'error' ? 'danger' : 'info' }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <h1>Twig CSRF Debug</h1>
+    <p>Token from Twig function: <strong>{{ csrf_token('authenticate') }}</strong></p>
+    <p>Token from Controller (Explicit): <strong>{{ csrf_token }}</strong></p>
+    
+    <form method="post">
+        <!-- Use the explicit token from controller -->
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}">
+        <button type="submit" class="btn btn-primary">Submit Form</button>
+    </form>
+</div>
+{% endblock %}

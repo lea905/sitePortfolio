@@ -10,7 +10,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class YesController extends AbstractController
 {
     #[Route(path: '/login', name: 'app_login')]
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function login(AuthenticationUtils $authenticationUtils, \Symfony\Component\Security\Csrf\CsrfTokenManagerInterface $csrfTokenManager): Response
     {
         // if ($this->getUser()) {
         //     return $this->redirectToRoute('target_path');
@@ -21,7 +21,14 @@ class YesController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        // Generate CSRF token explicitly to bypass Twig issue
+        $csrfToken = $csrfTokenManager->getToken('authenticate')->getValue();
+
+        return $this->render('security/login.html.twig', [
+            'last_username' => $lastUsername,
+            'error' => $error,
+            'csrf_token_value' => $csrfToken, // Explicit pass
+        ]);
     }
 
     #[Route(path: '/logout', name: 'app_logout')]

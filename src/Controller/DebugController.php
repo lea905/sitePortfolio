@@ -17,47 +17,49 @@ class DebugController extends AbstractController
         // 1. Get Session ID
         $session = $request->getSession();
         $session->start();
-        $sessionId = $session->getId();
+        $sessionId = $request->getSession()->getId();
 
         // 2. Generate CSRF Token
         $tokenId = 'authenticate';
-        $token = $csrfTokenManager->getToken($tokenId)->getValue();
+
+        $token = $csrfTokenManager->getToken($tokenId)->getValue(); // Refresh and get
         $managerClass = get_class($csrfTokenManager);
 
+        // Manual Generator Check
+        $manualGenerator = new \Symfony\Component\Security\Csrf\TokenGenerator\UriSafeTokenGenerator();
+        $manualToken = $manualGenerator->generateToken();
+
+        $this->addFlash('info', 'Manager: ' . $managerClass);
+        $this->addFlash('info', 'Injected Refresh Token: ' . $token);
+        $this->addFlash('info', 'Manual Generator Token: ' . $manualToken);
+
+        // Reflect to find the injected generator
+        try {
+            $reflection = new \ReflectionClass($csrfTokenManager);
+            if ($reflection->hasProperty('generator')) {
+                $property = $reflection->getProperty('generator');
+                $property->setAccessible(true);
+                $generator = $property->getValue($csrfTokenManager);
+                $generatorClass = is_object($generator) ? get_class($generator) : gettype($generator);
+            } else {
+                $generatorClass = 'Property "generator" not found';
+            }
+        } catch (\Exception $e) {
+            $generatorClass = 'Reflection Error: ' . $e->getMessage();
+        }
+        $this->addFlash('info', 'Injected Generator Class: ' . $generatorClass);
         // 3. Check if submitted and valid
-        $message = '';
         if ($request->isMethod('POST')) {
             $submittedToken = $request->request->get('_csrf_token');
             if ($csrfTokenManager->isTokenValid(new CsrfToken($tokenId, $submittedToken))) {
-                $message = '✅ SUCCESS: CSRF Token is VALID!';
+                $this->addFlash('success', 'CSRF Valid!');
             } else {
-                $message = '❌ ERROR: CSRF Token is INVALID!';
+                $this->addFlash('error', 'CSRF Invalid!');
             }
         }
 
-        return new Response(<<<HTML
-<html>
-<body>
-    <h1>Session & CSRF Debugger</h1>
-    <p><strong>Session ID:</strong> $sessionId</p>
-    <p><em>Reload this page. If the Session ID changes, your session is not persisting.</em></p>
-    
-    <hr>
-    
-    <h2>Test CSRF</h2>
-    <p><strong>Manager Class:</strong> $managerClass</p>
-    <p><strong>Generated Token:</strong> $token</p>
-    
-    <h3>Validation Result:</h3>
-    <p style="font-size: 1.2em; font-weight: bold;">$message</p>
-
-    <form method="post">
-        <input type="hidden" name="_csrf_token" value="$token">
-        <button type="submit">Test CSRF Validation</button>
-    </form>
-</body>
-</html>
-HTML
-        );
+        return $this->render('debug/csrf.html.twig', [
+            'csrf_token' => $token, // Explicitly pass the token we generated
+        ]);
     }
 }

@@ -42,13 +42,22 @@ class SecurityControllerAuthenticator extends AbstractLoginFormAuthenticator
         $csrfToken = new \Symfony\Component\Security\Csrf\CsrfToken('authenticate', $tokenValue);
 
         $isValid = $this->csrfTokenManager->isTokenValid($csrfToken);
+
+        // Log debug info to a file we can easily read
+        $logContent = sprintf(
+            "[%s] Manager: %s | Token Received: %s | Valid: %s\n",
+            date('Y-m-d H:i:s'),
+            get_class($this->csrfTokenManager),
+            $tokenValue,
+            $isValid ? 'YES' : 'NO'
+        );
+        file_put_contents(__DIR__ . '/../../var/csrf_debug.log', $logContent, FILE_APPEND);
+
         if (!$isValid) {
-            $this->logger->error('CRITICAL: CSRF Token is INVALID but proceeding anyway for debug.');
-        } else {
-            $this->logger->info('SUCCESS: CSRF Token is VALID.');
+            $this->logger->error('CSRF Token Invalid. See var/csrf_debug.log for details.');
+            throw new \Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException();
         }
 
-        // Proceed even if invalid
         return new Passport(
             new UserBadge($email),
             new PasswordCredentials($request->getPayload()->getString('password')),
