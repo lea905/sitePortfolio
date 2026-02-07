@@ -13,31 +13,24 @@ class ParcoursController extends AbstractController
     {
         $experiences = [
             [
-                'title' => 'Développeuse web',
+                'title' => 'Développeuse web (stage et alternance)',
                 'company' => 'E-Conception',
-                'date' => '2025- Present',
-                'description' => 'Develppement Wordpress, SEO',
+                'date' => 'Avril 2025 - Février 2026',
+                'description' => "Développement Fullstack pour la Plaine de l'Ain : Conception de l'architecture Back-end (Symfony, Doctrine), intégration d'interfaces responsive (Twig, Bootstrap) et gestion de projets sous l'écosystème WordPress",
                 'type' => 'Alternance'
-            ],
-            [
-                'title' => 'Développeuse web',
-                'company' => 'E-Conception',
-                'date' => '2025',
-                'description' => "Développement projet plaine de l'ain",
-                'type' => 'Stage'
             ],
             [
                 'title' => 'Agent de maintenance',
                 'company' => 'Camping La Plaine Tonique',
                 'date' => '2024',
-                'description' => 'Nettoyer les sanitaires du camping',
+                'description' => "Assurer l'entretien complet et la désinfection des blocs sanitaires (douches, WC, lavabos)",
                 'type' => '1 mois'
             ],
             [
-                'title' => 'Puéricultrice',
+                'title' => 'Auxiliaire de puériculture',
                 'company' => 'Crèches des Minis',
                 'date' => '2019',
-                'description' => "J'ai aidé les puéricultrices dans leur travail pendant mon stage",
+                'description' => "Accompagnement quotidien des enfants : gestion des repas, de l'hygiène et du coucher",
                 'type' => 'Stage'
             ]
         ];
