@@ -18,5 +18,9 @@ fi
 # Run database migrations automatically
 php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
 
+# Fix permissions: Migrations running as root might have messed up cache permissions.
+# We give ownership of var/ directory back to www-data (Apache user).
+chown -R www-data:www-data var
+
 # Execute the original entrypoint
 exec docker-php-entrypoint "$@"
