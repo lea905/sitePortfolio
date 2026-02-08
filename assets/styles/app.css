@@ -711,3 +711,91 @@ footer .container {
         margin-top: 1rem;
     }
 }
+
+/* --- RESPONSIVE FIXES (Home & Parcours) --- */
+@media (max-width: 768px) {
+
+    /* Global Alignment */
+    .container {
+        padding: 0 1.5rem;
+        /* Ensure breathing room on sides */
+    }
+
+    .section-padding {
+        padding: 3rem 0;
+        /* Less padding on mobile */
+    }
+
+    /* Hero Section */
+    .hero-content h1 {
+        font-size: 2.5rem;
+        /* Smaller title */
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        /* Stack buttons */
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+        /* Full width buttons */
+        text-align: center;
+    }
+
+    /* Skills Grid */
+    .skills-grid-circles {
+        gap: 1rem;
+    }
+
+    .skill-card {
+        min-width: 45%;
+        /* 2 per row approx */
+        padding: 1rem;
+    }
+
+    /* Timeline (Parcours) - Vertical Left Aligned */
+    .timeline::before {
+        left: 20px;
+        /* Line to the left */
+        transform: none;
+    }
+
+    .timeline-item {
+        margin-bottom: 3rem;
+    }
+
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        width: 100%;
+        text-align: left;
+        padding-left: 50px;
+        /* Space for line */
+        padding-right: 0;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .timeline-dot {
+        left: 20px;
+        /* Align with line */
+        transform: translateX(-50%);
+    }
+
+    .timeline-date {
+        left: 50px;
+        /* Align text right of dot */
+        transform: none;
+        top: -35px;
+        font-size: 0.85rem;
+    }
+}
