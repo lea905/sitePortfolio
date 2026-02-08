@@ -12,13 +12,12 @@ RUN apt-get update && apt-get install -y \
     zip \
     pdo_mysql
 
-# Manually remove ALL MPMs using wildcards to ensure a clean slate
-RUN rm -f /etc/apache2/mods-enabled/mpm_*.load \
-    && rm -f /etc/apache2/mods-enabled/mpm_*.conf \
-    && a2enmod mpm_prefork rewrite
+# Copy and set up entrypoint script
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
-# Set ServerName to suppress warnings
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+ENTRYPOINT ["docker-entrypoint.sh"]
+CMD ["apache2-foreground"]
 
 # Enable Apache mod_rewrite for .htaccess support
 RUN a2enmod rewrite
