@@ -22,5 +22,11 @@ php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migratio
 # We give ownership of var/ directory back to www-data (Apache user).
 chown -R www-data:www-data var
 
+# Load fixtures if requested (POPULATES DATABASE)
+if [ "$LOAD_FIXTURES" = "true" ]; then
+    echo "Loading fixtures..."
+    php bin/console doctrine:fixtures:load --no-interaction
+fi
+
 # Execute the original entrypoint
 exec docker-php-entrypoint "$@"
