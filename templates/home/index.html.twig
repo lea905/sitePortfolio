@@ -8,7 +8,7 @@
                 <p class="hero-subtitle">Bonjour, je suis Léa Barnezet</p>
                 <h1>Développeuse <span style="color: var(--accent);">Full Stack</span></h1>
                 <p class="hero-description" style="max-width: 600px; margin: 0 auto 2rem; color: var(--text-muted);">
-                    Je conçois des applications web robustes et modernes. Actuellement à la recherche d’un CDI à Bourg-en-Bresse, Lyon ou dans ses alentours
+                    Je conçois des applications web robustes et modernes. Actuellement à la recherche d’un stage de 7 à 10 semaines à Bourg-en-Bresse, Lyon ou dans ses alentours
                 </p>
                 <div class="hero-actions">
                     <a href="#projets" class="btn btn-primary">Voir mes projets</a>
@@ -85,7 +85,7 @@
                     <article class="project-card" style="background: var(--bg-body); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); transition: transform 0.3s ease;">
                         <div class="project-image" style="height: 200px; background-color: #2d2d2d; display: flex; align-items: center; justify-content: center; overflow: hidden;">
                             {% if project.image %}
-                                <img src="{{ project.image }}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="{{ asset(project.image) }}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
                             {% else %}
                                 <span style="color: var(--text-muted);">{{ project.title }}</span>
                             {% endif %}
