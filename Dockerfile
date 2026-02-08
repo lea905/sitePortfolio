@@ -49,5 +49,9 @@ COPY . .
 # Finish composer installation and dump autoload
 RUN composer dump-autoload --optimize --no-dev --classmap-authoritative
 
+# Install assets (Importmap & AssetMapper)
+RUN php bin/console importmap:install
+RUN php bin/console asset-map:compile
+
 # Fix permissions for Apache
 RUN chown -R www-data:www-data /var/www/html
