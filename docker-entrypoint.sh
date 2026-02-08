@@ -15,5 +15,8 @@ if [ -n "$PORT" ]; then
     sed -i "s/:80/:$PORT/" /etc/apache2/sites-available/*.conf
 fi
 
+# Run database migrations automatically
+php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration
+
 # Execute the original entrypoint
 exec docker-php-entrypoint "$@"
