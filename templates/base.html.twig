@@ -24,13 +24,17 @@
         <div id="canvas-container" data-controller="particle-background"></div>
         <header>
             <div class="container">
-                <nav>
-                    <div class="nav-links">
-                        <a href="{{ path('app_home') }}" class="{{ app.request.attributes.get('_route') == 'app_home' ? 'active' : '' }}">Accueil</a>
-                        <a href="{{ path('app_project') }}" class="{{ app.request.attributes.get('_route') == 'app_project' ? 'active' : '' }}">Projets</a>
-                        <a href="{{ path('app_competences') }}" class="{{ app.request.attributes.get('_route') == 'app_competences' ? 'active' : '' }}">Stack</a>
-                        <a href="{{ path('app_parcours') }}" class="{{ app.request.attributes.get('_route') == 'app_parcours' ? 'active' : '' }}">Parcours</a>
-                        <a href="{{ asset('cv_FR.pdf') }}" target="_blank" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.9rem;">CV</a>
+                <nav data-controller="mobile-menu">
+                    <button class="mobile-menu-btn" data-action="click->mobile-menu#toggle">
+                        <i class="fas fa-bars" data-mobile-menu-target="icon"></i>
+                    </button>
+
+                    <div class="nav-links" data-mobile-menu-target="menu">
+                        <a href="{{ path('app_home') }}" class="{{ app.request.attributes.get('_route') == 'app_home' ? 'active' : '' }}" data-action="click->mobile-menu#closeOnNavigate">Accueil</a>
+                        <a href="{{ path('app_project') }}" class="{{ app.request.attributes.get('_route') == 'app_project' ? 'active' : '' }}" data-action="click->mobile-menu#closeOnNavigate">Projets</a>
+                        <a href="{{ path('app_competences') }}" class="{{ app.request.attributes.get('_route') == 'app_competences' ? 'active' : '' }}" data-action="click->mobile-menu#closeOnNavigate">Stack</a>
+                        <a href="{{ path('app_parcours') }}" class="{{ app.request.attributes.get('_route') == 'app_parcours' ? 'active' : '' }}" data-action="click->mobile-menu#closeOnNavigate">Parcours</a>
+                        <a href="{{ asset('cv_FR.pdf') }}" target="_blank" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.9rem;" data-action="click->mobile-menu#closeOnNavigate">CV</a>
                         
                         <div class="theme-toggle-wrapper">
                             <input type="checkbox" class="theme-toggle" id="chk" data-action="change->theme#toggle">
