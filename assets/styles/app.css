@@ -798,4 +798,17 @@ footer .container {
         top: -35px;
         font-size: 0.85rem;
     }
+
+    /* Fix CV Button width in mobile menu */
+    .nav-links .btn {
+        width: auto;
+        min-width: 120px;
+        /* Ensure it's not too small */
+    }
+}
+
+/* --- PROJECT GRID ALIGNMENT FIX --- */
+.projects-grid {
+    justify-content: center;
+}
 }
