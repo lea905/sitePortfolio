@@ -12,12 +12,13 @@ RUN apt-get update && apt-get install -y \
     zip \
     pdo_mysql
 
-# Manually remove conflicting MPMs to ensure only prefork is used
-RUN rm -f /etc/apache2/mods-enabled/mpm_event.load \
-    && rm -f /etc/apache2/mods-enabled/mpm_event.conf \
-    && rm -f /etc/apache2/mods-enabled/mpm_worker.load \
-    && rm -f /etc/apache2/mods-enabled/mpm_worker.conf \
-    && a2enmod mpm_prefork
+# Manually remove ALL MPMs using wildcards to ensure a clean slate
+RUN rm -f /etc/apache2/mods-enabled/mpm_*.load \
+    && rm -f /etc/apache2/mods-enabled/mpm_*.conf \
+    && a2enmod mpm_prefork rewrite
+
+# Set ServerName to suppress warnings
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 # Enable Apache mod_rewrite for .htaccess support
 RUN a2enmod rewrite
