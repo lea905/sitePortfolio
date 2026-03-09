@@ -15,7 +15,7 @@ class UserFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $user = new \App\Entity\User();
-        $user->setEmail('admin@example.com');
+        $user->setEmail('admin@exemple.com');
         $user->setRoles(['ROLE_ADMIN']);
         $password = $this->hasher->hashPassword($user, 'admin');
         $user->setPassword($password);

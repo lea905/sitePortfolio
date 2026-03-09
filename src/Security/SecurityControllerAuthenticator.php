@@ -31,29 +31,22 @@ class SecurityControllerAuthenticator extends AbstractLoginFormAuthenticator
 
     public function authenticate(Request $request): Passport
     {
-        $email = $request->getPayload()->getString('email');
+        $email = $request->request->get('email', '');
+        $password = $request->request->get('password', '');
+        $csrfToken = $request->request->get('_csrf_token');
 
-        // DEBUGGING LOGS
-        $this->logger->info('--- LOGIN DEBUG ---');
-        $this->logger->info('Email: ' . $email);
-        $tokenValue = $request->getPayload()->getString('_csrf_token');
-        $this->logger->info('CSRF Token in Request: ' . $tokenValue);
+        $this->logger->info('--- LOGIN ATTEMPT ---');
+        $this->logger->info('Session ID: ' . $request->getSession()->getId());
+        $this->logger->info('CSRF Token received: ' . $csrfToken);
+        $this->logger->info('Cookies: ' . json_encode($request->cookies->all()));
 
-        $csrfToken = new \Symfony\Component\Security\Csrf\CsrfToken('authenticate', $tokenValue);
-
-        $isValid = $this->csrfTokenManager->isTokenValid($csrfToken);
-
-        $isValid = $this->csrfTokenManager->isTokenValid($csrfToken);
-
-        if (!$isValid) {
-            $this->logger->error('CSRF Token Invalid.');
-            throw new \Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException();
-        }
+        $request->getSession()->set(SecurityRequestAttributes::LAST_USERNAME, $email);
 
         return new Passport(
             new UserBadge($email),
-            new PasswordCredentials($request->getPayload()->getString('password')),
+            new PasswordCredentials($password),
             [
+                new CsrfTokenBadge('authenticate', $csrfToken),
                 new RememberMeBadge(),
             ]
         );

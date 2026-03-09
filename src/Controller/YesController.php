@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -10,7 +12,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class YesController extends AbstractController
 {
     #[Route(path: '/login', name: 'app_login')]
-    public function login(AuthenticationUtils $authenticationUtils, \Symfony\Component\Security\Csrf\CsrfTokenManagerInterface $csrfTokenManager): Response
+    public function login(Request $request, AuthenticationUtils $authenticationUtils, LoggerInterface $logger): Response
     {
         // if ($this->getUser()) {
         //     return $this->redirectToRoute('target_path');
@@ -21,13 +23,13 @@ class YesController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        // Generate CSRF token explicitly to bypass Twig issue
-        $csrfToken = $csrfTokenManager->getToken('authenticate')->getValue();
+        $session = $request->getSession();
+        $logger->info('--- LOGIN PAGE LOAD ---');
+        $logger->info('Session ID: ' . $session->getId());
 
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername,
             'error' => $error,
-            'csrf_token_value' => $csrfToken, // Explicit pass
         ]);
     }
 
