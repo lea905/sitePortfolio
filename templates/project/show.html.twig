@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ project.title }} | Léa Barnezet{% endblock %}
+
+{% block body %}
+    <section class="section-padding" style="padding-top: 120px; min-height: 100vh; background-color: #080c1f;">
+        <div class="container">
+            <a href="{{ path('app_project') }}" style="color: var(--accent); margin-bottom: 2rem; display: inline-block;">&larr; Retour aux projets</a>
+
+            <h1 class="section-title" style="margin-bottom: 2rem; font-size: 2.5rem; color: var(--text-main);">{{ project.title }}</h1>
+
+            <div style="display: grid; grid-template-columns: 1fr; gap: 3rem; margin-bottom: 4rem;">
+                <div style="background: var(--bg-card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color);">
+                    {% if project.image %}
+                        <img src="{{ asset(project.image) }}" alt="{{ project.title }}" style="width: 100%; height: auto; max-height: 600px; object-fit: cover;">
+                    {% else %}
+                        <div style="height: 400px; display: flex; align-items: center; justify-content: center; background-color: #1a1f35;">
+                            <span style="color: var(--text-muted);">Image non disponible</span>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div style="background: var(--bg-card); border-radius: 12px; padding: 2.5rem; border: 1px solid var(--border-color);">
+                    <div class="project-tags" style="margin-bottom: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        {% if project.technologies %}
+                            {% for tech in project.technologies|split(',') %}
+                                <span class="tech-badge" style="display: inline-block; padding: 0.4rem 1rem; background: rgba(168, 85, 247, 0.1); color: var(--accent); border-radius: 4px; font-size: 0.95rem; font-weight: 500;">{{ tech|trim }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                    {% if project.duration %}
+                        <div style="margin-bottom: 2rem;">
+                            <span class="duration-badge" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; background: rgba(255, 255, 255, 0.05); color: var(--text-main); border-radius: 4px; font-size: 0.95rem;">
+                                {{ project.duration }}
+                            </span>
+                        </div>
+                    {% endif %}
+
+                    {% if project.contexte %}
+                        <h3 style="color: var(--text-main); margin-bottom: 1.5rem; font-size: 1.6rem;">Contexte</h3>
+                        <div style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 3rem; white-space: pre-wrap;">{{ project.contexte }}</div>
+                    {% endif %}
+
+                    <h3 style="color: var(--text-main); margin-bottom: 1.5rem; font-size: 1.6rem;">Description</h3>
+                    <div style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 3rem; white-space: pre-wrap;">{{ project.description }}</div>
+
+
+
+                    {% if project.link %}
+                        <div style="margin-top: 2rem;">
+                            <a href="{{ project.link }}" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.8rem; font-size: 1.05rem; padding: 0.8rem 2rem;">
+                                Voir le projet en ligne &rarr;
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

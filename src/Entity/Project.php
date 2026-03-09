@@ -108,4 +108,19 @@ class Project
 
         return $this;
     }
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $contexte = null;
+
+    public function getContexte(): ?string
+    {
+        return $this->contexte;
+    }
+
+    public function setContexte(?string $contexte): static
+    {
+        $this->contexte = $contexte;
+
+        return $this;
+    }
 }

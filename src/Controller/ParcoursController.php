@@ -35,8 +35,26 @@ class ParcoursController extends AbstractController
             ]
         ];
 
+        $formations = [
+            [
+                'title' => 'BUT Informatique',
+                'school' => 'IUT Lyon 1 (site de Bourg-en-Bresse)',
+                'date' => '2022 - Actuellement',
+                'description' => "Bachelor Universitaire de Technologie sur 3 ans.",
+                'type' => 'En cours'
+            ],
+            [
+                'title' => 'Baccalauréat STI2D',
+                'school' => 'Lycée Galilée',
+                'date' => '2019 - 2022',
+                'description' => "Systèmes d'Information et Numérique (SIN).",
+                'type' => 'Obtenu'
+            ]
+        ];
+
         return $this->render('parcours/index.html.twig', [
             'experiences' => $experiences,
+            'formations' => $formations,
         ]);
     }
 }

@@ -37,14 +37,19 @@
 
                             <h3 style="margin-bottom: 0.5rem; color: var(--text-main);">{{ project.title }}</h3>
                             <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">
-                                {{ project.description|nl2br }}
+                                {{ project.description|striptags|slice(0, 120) ~ (project.description|length > 120 ? '...' : '') }}
                             </p>
 
-                            {% if project.link %}
-                                <a href="{{ project.link }}" target="_blank" style="color: var(--accent); font-weight: 500; font-size: 0.9rem; margin-top: auto; display: inline-flex; align-items: center; gap: 0.5rem;">
-                                    Voir le projet &rarr;
+                            <div style="margin-top: auto; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                                <a href="{{ path('app_project_show', {'id': project.id}) }}" style="color: var(--text-main); font-weight: 500; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--border-color); padding: 0.4rem 0.8rem; border-radius: 4px; transition: all 0.2s ease;">
+                                    Détails &rarr;
                                 </a>
-                            {% endif %}
+                                {% if project.link %}
+                                    <a href="{{ project.link }}" target="_blank" style="color: var(--accent); font-weight: 500; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+                                        Lien final &rarr;
+                                    </a>
+                                {% endif %}
+                            </div>
                         </div>
                     </article>
                 {% else %}

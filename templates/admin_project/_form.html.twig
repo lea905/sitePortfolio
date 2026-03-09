@@ -12,6 +12,12 @@
     </div>
 
     <div style="margin-bottom: 1.5rem;">
+        {{ form_label(form.contexte, 'Contexte', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.contexte, {'attr': {'class': 'form-control', 'rows': '3'}}) }}
+        <div style="color: #fca5a5; font-size: 0.85rem; margin-top: 0.5rem;">{{ form_errors(form.contexte) }}</div>
+    </div>
+
+    <div style="margin-bottom: 1.5rem;">
         {{ form_label(form.technologies, 'Technologies (ex: Symfony, React)', {'label_attr': {'class': 'form-label'}}) }}
         {{ form_widget(form.technologies, {'attr': {'class': 'form-control', 'placeholder': 'Symfony, React, Docker'}}) }}
         <div style="color: #fca5a5; font-size: 0.85rem; margin-top: 0.5rem;">{{ form_errors(form.technologies) }}</div>

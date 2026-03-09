@@ -41,6 +41,13 @@
                     <p style="color: var(--text-main); white-space: pre-line;">{{ project.description }}</p>
                 </div>
 
+                {% if project.contexte %}
+                <div style="margin-bottom: 2rem;">
+                    <h3 style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 0.5rem;">Contexte</h3>
+                    <p style="color: var(--text-main); white-space: pre-line;">{{ project.contexte }}</p>
+                </div>
+                {% endif %}
+
                 {% if project.image is empty %}
                     <div style="margin-bottom: 2rem;">
                         <h3 style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 0.5rem;">Image URL</h3>

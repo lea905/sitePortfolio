@@ -7,20 +7,43 @@
         <div class="container">
             <h1 class="section-title" style="text-align: center; margin-bottom: 4rem; font-size: 2.5rem;">Mon Parcours</h1>
 
-            <div class="timeline">
-                {% for exp in experiences %}
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">{{ exp.date }}</div>
-                        <div class="timeline-content glass-card">
-                            <h3>{{ exp.title }}</h3>
-                            <h4 style="color: var(--accent); margin-bottom: 1rem;">{{ exp.company }}, {{ exp.type }}</h4>
-                            <p style="color: var(--text-muted); font-size: 0.95rem;">{{ exp.description }}</p>
-                        </div>
+            <div class="parcours-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem;">
+                
+                <div>
+                    <h2 style="margin-bottom: 2rem; color: var(--text-main); font-size: 1.8rem; text-align: center;">Expériences Professionnelles</h2>
+                    <div class="timeline">
+                        {% for exp in experiences %}
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-date">{{ exp.date }}</div>
+                                <div class="timeline-content glass-card">
+                                    <h3>{{ exp.title }}</h3>
+                                    <h4 style="color: var(--accent); margin-bottom: 1rem;">{{ exp.company }}, {{ exp.type }}</h4>
+                                    <p style="color: var(--text-muted); font-size: 0.95rem;">{{ exp.description }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
                     </div>
-                {% endfor %}
-            </div>
+                </div>
 
+                <div>
+                    <h2 style="margin-bottom: 2rem; color: var(--text-main); font-size: 1.8rem; text-align: center;">Formations</h2>
+                    <div class="timeline">
+                        {% for form in formations %}
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-date">{{ form.date }}</div>
+                                <div class="timeline-content glass-card">
+                                    <h3>{{ form.title }}</h3>
+                                    <h4 style="color: var(--accent); margin-bottom: 1rem;">{{ form.school }}, {{ form.type }}</h4>
+                                    <p style="color: var(--text-muted); font-size: 0.95rem;">{{ form.description }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 {% endblock %}

@@ -34,8 +34,9 @@
                         <a href="{{ path('app_project') }}" class="{{ app.request.attributes.get('_route') == 'app_project' ? 'active' : '' }}" data-action="click->mobile-menu#closeOnNavigate">Projets</a>
                         <a href="{{ path('app_competences') }}" class="{{ app.request.attributes.get('_route') == 'app_competences' ? 'active' : '' }}" data-action="click->mobile-menu#closeOnNavigate">Stack</a>
                         <a href="{{ path('app_parcours') }}" class="{{ app.request.attributes.get('_route') == 'app_parcours' ? 'active' : '' }}" data-action="click->mobile-menu#closeOnNavigate">Parcours</a>
+                        <a href="{{ path('app_about') }}" class="{{ app.request.attributes.get('_route') == 'app_about' ? 'active' : '' }}" data-action="click->mobile-menu#closeOnNavigate">À propos</a>
                         <a href="{{ asset('cv_FR.pdf') }}" target="_blank" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.9rem;" data-action="click->mobile-menu#closeOnNavigate">CV</a>
-                        
+
                         <div class="theme-toggle-wrapper">
                             <input type="checkbox" class="theme-toggle" id="chk" data-action="change->theme#toggle">
                             <label class="theme-toggle-label" for="chk">

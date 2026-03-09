@@ -14,6 +14,7 @@ class ProjectType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
+            ->add('contexte')
             ->add('image')
             ->add('link')
             ->add('technologies', null, [
