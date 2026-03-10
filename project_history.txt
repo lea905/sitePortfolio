@@ -1,0 +1,75 @@
+﻿commit 74b72c71b3e5757443d19f2faae3230e55957e74
+Author: lea905 <leabarnezet@gmail.com>
+Date:   Mon Mar 9 11:54:53 2026 +0100
+
+    [MODIFY] projet et login
+
+diff --git a/templates/project/index.html.twig b/templates/project/index.html.twig
+index ed2601f..b226623 100644
+--- a/templates/project/index.html.twig
++++ b/templates/project/index.html.twig
+@@ -37,7 +37,7 @@
+ 
+                             <h3 style="margin-bottom: 0.5rem; color: var(--text-main);">{{ project.title }}</h3>
+                             <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">
+-                                {{ project.description|striptags|slice(0, 120) ~ (project.description|length > 120 ? '...' : '') }}
++                                {{ project.contexte|striptags|slice(0, 120) ~ (project.contexte|length > 120 ? '...' : '') }}
+                             </p>
+ 
+                             <div style="margin-top: auto; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+
+commit 2d065369c1dcdb4c10b98dcb99b62ef483ca2244
+Author: lea905 <leabarnezet@gmail.com>
+Date:   Mon Mar 9 09:56:30 2026 +0100
+
+    [MODIFY & ADD] page projet & about
+
+diff --git a/templates/project/index.html.twig b/templates/project/index.html.twig
+index 6cf5acf..ed2601f 100644
+--- a/templates/project/index.html.twig
++++ b/templates/project/index.html.twig
+@@ -37,14 +37,19 @@
+ 
+                             <h3 style="margin-bottom: 0.5rem; color: var(--text-main);">{{ project.title }}</h3>
+                             <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1;">
+-                                {{ project.description|nl2br }}
++                                {{ project.description|striptags|slice(0, 120) ~ (project.description|length > 120 ? '...' : '') }}
+                             </p>
+ 
+-                            {% if project.link %}
+-                                <a href="{{ project.link }}" target="_blank" style="color: var(--accent); font-weight: 500; font-size: 0.9rem; margin-top: auto; display: inline-flex; align-items: center; gap: 0.5rem;">
+-                                    Voir le projet &rarr;
++                            <div style="margin-top: auto; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
++                                <a href="{{ path('app_project_show', {'id': project.id}) }}" style="color: var(--text-main); font-weight: 500; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--border-color); padding: 0.4rem 0.8rem; border-radius: 4px; transition: all 0.2s ease;">
++                                    D├®tails &rarr;
+                                 </a>
+-                            {% endif %}
++                                {% if project.link %}
++                                    <a href="{{ project.link }}" target="_blank" style="color: var(--accent); font-weight: 500; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem;">
++                                        Lien final &rarr;
++                                    </a>
++                                {% endif %}
++                            </div>
+                         </div>
+                     </article>
+                 {% else %}
+
+commit 96bcfcd98e5e50b036ceab56717052b665423ffb
+Author: lea905 <leabarnezet@gmail.com>
+Date:   Sun Feb 8 11:08:47 2026 +0100
+
+    [ADD] new cv, stack and project
+
+diff --git a/templates/project/index.html.twig b/templates/project/index.html.twig
+index fe45123..6cf5acf 100644
+--- a/templates/project/index.html.twig
++++ b/templates/project/index.html.twig
+@@ -12,7 +12,7 @@
+                     <article class="project-card" style="background: var(--bg-card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); transition: transform 0.3s ease; display: flex; flex-direction: column;">
+                         <div class="project-image" style="height: 200px; overflow: hidden; background-color: #1a1f35; position: relative;">
+                             {% if project.image %}
+-                                <img src="{{ project.image }}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
++                                <img src="{{ asset(project.image) }}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;">
+                             {% else %}
+                                 <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                     <span style="color: var(--text-muted);">Image non disponible</span>

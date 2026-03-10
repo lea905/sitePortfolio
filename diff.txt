@@ -1,0 +1,66 @@
+﻿diff --git a/assets/styles/app.css b/assets/styles/app.css
+index b086437..86a3a16 100644
+--- a/assets/styles/app.css
++++ b/assets/styles/app.css
+@@ -23,8 +23,14 @@
+     --bg-footer: #03050e;
+     /* Default Dark Footer */
+ 
++    /* overrides pour Bootstrap */
++    --bs-body-color: var(--text-main);
++    --bs-body-bg: var(--bg-body);
++    --bs-heading-color: var(--text-main);
++
+     /* --- FONTS --- */
+     --font-heading: 'Outfit', sans-serif;
++
+     --font-body: 'Inter', sans-serif;
+ }
+ 
+@@ -65,12 +71,6 @@ ul {
+ }
+ 
+ /* --- UTILS --- */
+-.container {
+-    width: 90%;
+-    max-width: 1200px;
+-    margin: 0 auto;
+-    padding: 0 1rem;
+-}
+ 
+ .btn {
+     display: inline-block;
+@@ -101,6 +101,8 @@ ul {
+ 
+ .btn-outline:hover {
+     background-color: rgba(168, 85, 247, 0.1);
++    color: var(--accent);
++    /* Prevent Bootstrap from changing text color on hover */
+ }
+ 
+ .section-padding {
+@@ -811,7 +813,6 @@ footer .container {
+ .projects-grid {
+     justify-content: center;
+ }
+-}
+ 
+ .project-card {
+     position: relative;
+@@ -820,7 +821,8 @@ footer .container {
+ }
+ 
+ .project-card:hover {
+-    transform: translateY(-10px); /* Soul├¿ve la carte */
++    transform: translateY(-10px);
++    /* Soul├¿ve la carte */
+     border-color: var(--accent) !important;
+     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+ }
+@@ -839,4 +841,4 @@ footer .container {
+     left: 0;
+     z-index: 1;
+     content: "";
+-}
++}
+\ No newline at end of file

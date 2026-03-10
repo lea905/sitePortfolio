@@ -1,11 +1,11 @@
-:root {
+﻿:root {
     /* --- PALETTE --- */
     --bg-body: #050816;
-    /* Fond principal très sombre */
+    /* Fond principal tr├¿s sombre */
     --bg-card: #0b0f19;
     /* Fond des cartes/sections */
     --bg-nav: rgba(5, 8, 22, 0.85);
-    /* Navbar floutée */
+    /* Navbar flout├®e */
 
     --text-main: #f5f5f5;
     /* Texte principal */
@@ -23,14 +23,8 @@
     --bg-footer: #03050e;
     /* Default Dark Footer */
 
-    /* overrides pour Bootstrap */
-    --bs-body-color: var(--text-main);
-    --bs-body-bg: var(--bg-body);
-    --bs-heading-color: var(--text-main);
-
     /* --- FONTS --- */
     --font-heading: 'Outfit', sans-serif;
-
     --font-body: 'Inter', sans-serif;
 }
 
@@ -107,8 +101,6 @@ ul {
 
 .btn-outline:hover {
     background-color: rgba(168, 85, 247, 0.1);
-    color: var(--accent);
-    /* Prevent Bootstrap from changing text color on hover */
 }
 
 .section-padding {
@@ -819,6 +811,7 @@ footer .container {
 .projects-grid {
     justify-content: center;
 }
+}
 
 .project-card {
     position: relative;
@@ -827,8 +820,7 @@ footer .container {
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
-    /* Soulève la carte */
+    transform: translateY(-10px); /* Soul├¿ve la carte */
     border-color: var(--accent) !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }

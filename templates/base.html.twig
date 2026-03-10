@@ -20,8 +20,9 @@
             {{ importmap('app') }}
         {% endblock %}
     </head>
-    <body data-controller="theme">
+    <body data-controller="theme" class="d-flex flex-column min-vh-100" data-theme="dark" data-bs-theme="dark">
         <div id="canvas-container" data-controller="particle-background"></div>
+
         <header>
             <div class="container">
                 <nav data-controller="mobile-menu">
@@ -50,15 +51,18 @@
             </div>
         </header>
 
-        {% block body %}{% endblock %}
 
-        <footer>
-            <div class="container">
-                <p class="copyright">© 2023-2026 Léa Barnezet - Développeuse Full Stack</p>
-                <div class="socials">
-{#                    <a href="https://github.com/lea905" target="_blank">GitHub</a>#}
-                    <a href="https://www.linkedin.com/in/léa-barnezet-333aa8267/" target="_blank">LinkedIn</a>
-                    <a href="mailto:Barnezet905@gmail.com">Email</a>
+
+        <main class="flex-grow-1">
+            {% block body %}{% endblock %}
+        </main>
+
+        <footer class="mt-auto py-5" style="background-color: var(--bg-footer); border-top: 1px solid var(--border-color);">
+            <div class="container text-center">
+                <p class="copyright mb-3 text-muted small">© 2023-2026 Léa Barnezet - Développeuse Full Stack</p>
+                <div class="socials d-flex justify-content-center gap-4">
+                    <a href="https://www.linkedin.com/in/léa-barnezet-333aa8267/" target="_blank" class="text-decoration-none">LinkedIn</a>
+                    <a href="mailto:Barnezet905@gmail.com" class="text-decoration-none">Email</a>
                 </div>
             </div>
         </footer>

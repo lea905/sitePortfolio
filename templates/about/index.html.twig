@@ -3,58 +3,76 @@
 {% block title %}À propos de moi | Léa Barnezet{% endblock %}
 
 {% block body %}
-    <section class="section-padding" style="padding-top: 120px; min-height: 100vh; background-color: var(--bg-body);">
-        <div class="container">
-            <h1 class="section-title" style="text-align: center; margin-bottom: 4rem; font-size: 2.5rem;">À propos de moi</h1>
+    <section class="py-5" style="background-color: var(--bg-body); min-height: 100vh;">
+        <div class="container pt-5">
+            <h1 class="section-title text-center mb-5 display-5 fw-bold mt-4">À propos de moi</h1>
 
-            <div style="display: grid; grid-template-columns: 1fr; gap: 3rem; margin-bottom: 4rem;">
+            <div class="row gy-5 mb-5">
 
-                <div style="background: var(--bg-card); border-radius: 12px; padding: 2.5rem; border: 1px solid var(--border-color);">
-                    <h2 style="color: var(--text-main); margin-bottom: 1.5rem; font-size: 1.8rem;">Qui suis-je ?</h2>
-                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
-                        Bonjour ! Je suis <strong>Léa Barnezet</strong>, une développeuse passionnée actuellement en formation en <strong>BUT Informatique</strong> à l'IUT Lyon 1 (site de Bourg-en-Bresse).
-                    </p>
-                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
-                        Mon parcours académique et mes expériences professionnelles m'ont permis de développer de solides compétences en développement Full Stack. J'aime particulièrement concevoir des applications web robustes, des interfaces fluides, et relever des défis techniques, que ce soit sur du web avec <strong>Symfony</strong> et <strong>Node.js</strong> ou du logiciel/mobile avec <strong>Java</strong> et <strong>Flutter</strong>.
-                    </p>
-                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
-                        Je suis de nature curieuse et motivée, ce qui me pousse régulièrement à réaliser des projets personnels divers, allant de la création de jeux vidéo à la conception de sites web.
-                    </p>
+                <div class="col-12">
+                    <div class="card bg-transparent border-0 h-100" style="background: var(--bg-card) !important; border-radius: 12px; border: 1px solid var(--border-color) !important;">
+                        <div class="card-body p-4 p-md-5">
+                            <h2 class="card-title text-light mb-4 fs-3 fw-bold">Qui suis-je ?</h2>
+                            <p class="card-text text-muted fs-5 lh-lg mb-4">
+                                Bonjour ! Je suis <strong>Léa Barnezet</strong>, une développeuse passionnée actuellement en formation en <strong>BUT Informatique</strong> à l'IUT Lyon 1 (site de Bourg-en-Bresse).
+                            </p>
+                            <p class="card-text text-muted fs-5 lh-lg mb-4">
+                                Mon parcours académique et mes expériences professionnelles m'ont permis de développer de solides compétences en développement Full Stack. J'aime particulièrement concevoir des applications web robustes, des interfaces fluides, et relever des défis techniques, que ce soit sur du web avec <strong>Symfony</strong> et <strong>Node.js</strong> ou du logiciel/mobile avec <strong>Java</strong> et <strong>Flutter</strong>.
+                            </p>
+                            <p class="card-text text-muted fs-5 lh-lg mb-4">
+                                Je suis de nature curieuse et motivée, ce qui me pousse régulièrement à réaliser des projets personnels divers, allant de la création de jeux vidéo à la conception de sites web.
+                            </p>
 
-                    <h3 style="color: var(--text-main); margin-bottom: 1.2rem; font-size: 1.4rem;">Ce que je recherche</h3>
-                    <div style="background: rgba(168, 85, 247, 0.05); border: 1px solid rgba(168, 85, 247, 0.2); border-radius: 8px; padding: 1.5rem;">
-                        <p style="color: var(--text-main); font-size: 1.05rem; margin: 0; display: flex; align-items: start; gap: 0.8rem;">
-                            <span>Je suis actuellement à la recherche d'un stage de <strong>7 à 10 semaines</strong> dans les environs de <strong>Bourg-en-Bresse, Lyon</strong> ou dans ses alentours.</span>
-                        </p>
+                            <h3 class="text-light mb-3 fs-4 fw-bold mt-5">Ce que je recherche</h3>
+                            <div class="p-4 rounded-3" style="background: rgba(168, 85, 247, 0.05); border: 1px solid rgba(168, 85, 247, 0.2);">
+                                <p class="text-light fs-5 m-0 d-flex align-items-start gap-3">
+                                    <span>Je suis actuellement à la recherche d'un stage de <strong>7 à 10 semaines</strong> dans les environs de <strong>Bourg-en-Bresse, Lyon</strong> ou dans ses alentours.</span>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-                    <div style="background: var(--bg-card); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); text-align: center;">
-                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🚗</div>
-                        <h3 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.2rem;">Mobilité</h3>
-                        <p style="color: var(--text-muted); font-size: 1rem;">Permis B</p>
-                        <p style="color: var(--text-muted); font-size: 1rem;">Véhiculée</p>
-                    </div>
+                <div class="col-12">
+                    <div class="row g-4">
+                        <div class="col-12 col-md-4">
+                            <div class="card bg-transparent text-center h-100 p-4 border-0" style="background: var(--bg-card) !important; border-radius: 12px; border: 1px solid var(--border-color) !important;">
+                                <div class="card-body">
+                                    <div class="display-4 mb-3">🚗</div>
+                                    <h3 class="card-title text-light mb-2 fs-5 fw-bold">Mobilité</h3>
+                                    <p class="card-text text-muted mb-1">Permis B</p>
+                                    <p class="card-text text-muted">Véhiculée</p>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div style="background: var(--bg-card); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); text-align: center;">
-                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🌍</div>
-                        <h3 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.2rem;">Langues</h3>
-                        <p style="color: var(--text-muted); font-size: 1rem;">Anglais (Intermédiaire)</p>
-                        <p style="color: var(--text-muted); font-size: 1rem;">Espagnol (Notions)</p>
-                    </div>
+                        <div class="col-12 col-md-4">
+                            <div class="card bg-transparent text-center h-100 p-4 border-0" style="background: var(--bg-card) !important; border-radius: 12px; border: 1px solid var(--border-color) !important;">
+                                <div class="card-body">
+                                    <div class="display-4 mb-3">🌍</div>
+                                    <h3 class="card-title text-light mb-2 fs-5 fw-bold">Langues</h3>
+                                    <p class="card-text text-muted mb-1">Anglais (Intermédiaire)</p>
+                                    <p class="card-text text-muted">Espagnol (Notions)</p>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div style="background: var(--bg-card); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); text-align: center;">
-                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🎓</div>
-                        <h3 style="color: var(--text-main); margin-bottom: 0.5rem; font-size: 1.2rem;">Formation</h3>
-                        <p style="color: var(--text-muted); font-size: 1rem;">BUT Informatique</p>
-                        <p style="color: var(--text-muted); font-size: 1rem;">Baccalauréat STI2D (SIN)</p>
+                        <div class="col-12 col-md-4">
+                            <div class="card bg-transparent text-center h-100 p-4 border-0" style="background: var(--bg-card) !important; border-radius: 12px; border: 1px solid var(--border-color) !important;">
+                                <div class="card-body">
+                                    <div class="display-4 mb-3">🎓</div>
+                                    <h3 class="card-title text-light mb-2 fs-5 fw-bold">Formation</h3>
+                                    <p class="card-text text-muted mb-1">BUT Informatique</p>
+                                    <p class="card-text text-muted">Baccalauréat STI2D (SIN)</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div style="text-align: center; margin-top: 2rem;">
-                    <a href="{{ asset('cv_FR.pdf') }}" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 0.8rem; font-size: 1.1rem; padding: 1rem 2.5rem;">
-                        📄 Télécharger mon CV complet
+                <div class="col-12 text-center mt-5">
+                    <a href="{{ asset('cv_FR.pdf') }}" target="_blank" class="btn btn-outline btn-lg d-inline-flex align-items-center gap-2 px-5 py-3">
+                        <i class="fas fa-file-pdf"></i> Télécharger mon CV complet
                     </a>
                 </div>
 

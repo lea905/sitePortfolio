@@ -2,73 +2,91 @@
 
 {% block body %}
     <!-- HERO SECTION -->
-    <section id="hero-section">
+    <section id="hero-section" class="d-flex align-items-center justify-content-center text-center py-5" style="min-height: 80vh; padding-top: 80px;">
         <div class="container">
             <div class="hero-content">
-                <p class="hero-subtitle">Bonjour, je suis Léa Barnezet</p>
-                <h1>Développeuse <span style="color: var(--accent);">Full Stack</span></h1>
-                <p class="hero-description" style="max-width: 600px; margin: 0 auto 2rem; color: var(--text-muted);">
+                <p class="hero-subtitle lead text-muted mx-auto mb-4" style="max-width: 600px;">Bonjour, je suis Léa Barnezet</p>
+                <h1 class="display-3 fw-bold mb-3">Développeuse <span style="color: var(--accent);">Full Stack</span></h1>
+                <p class="hero-description text-muted mx-auto mb-5" style="max-width: 600px; font-size: 1.1rem;">
                     Je conçois des applications web robustes et modernes. Actuellement à la recherche d’un stage de 7 à 10 semaines à Bourg-en-Bresse, Lyon ou dans ses alentours
                 </p>
-                <div class="hero-actions">
-                    <a href="#projets" class="btn btn-primary">Voir mes projets</a>
-                    <a href="{{ asset('cv_FR.pdf') }}" target="_blank" class="btn btn-outline">Télécharger mon CV</a>
+                <div class="hero-actions d-flex justify-content-center gap-3 flex-wrap">
+                    <a href="#projets" class="btn btn-primary px-4 py-2">Voir mes projets</a>
+                    <a href="{{ asset('cv_FR.pdf') }}" target="_blank" class="btn btn-outline px-4 py-2">Télécharger mon CV</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- SKILLS SECTION -->
-    <section id="competences" class="section-padding">
+    <section id="competences" class="py-5">
         <div class="container">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 3rem;">Mes Compétences</h2>
+            <h2 class="section-title text-center mb-5">Mes Compétences</h2>
 
-            <div class="skills-category">
-                <h3>Languages Informatiques</h3>
-                <div class="skills-grid-circles">
-                    <div class="skill-card" style="--skill-color: #e34c26;">
-                        <span class="skill-name">HTML</span>
+            <div class="skills-category text-center mb-5">
+                <h3 class="mb-4 text-muted fs-4">Languages Informatiques</h3>
+                <div class="row justify-content-center g-4">
+                    <div class="col-auto">
+                        <div class="skill-card" style="--skill-color: #e34c26;">
+                            <span class="skill-name">HTML</span>
+                        </div>
                     </div>
-                    <div class="skill-card" style="--skill-color: #264de4;">
-                        <span class="skill-name">CSS</span>
+                    <div class="col-auto">
+                        <div class="skill-card" style="--skill-color: #264de4;">
+                            <span class="skill-name">CSS</span>
+                        </div>
                     </div>
-                     <div class="skill-card" style="--skill-color: #f0db4f;">
-                        <span class="skill-name">JS</span>
+                    <div class="col-auto">
+                         <div class="skill-card" style="--skill-color: #f0db4f;">
+                            <span class="skill-name">JS</span>
+                        </div>
                     </div>
-                     <div class="skill-card" style="--skill-color: #777bb4;">
-                        <span class="skill-name">PHP</span>
+                    <div class="col-auto">
+                         <div class="skill-card" style="--skill-color: #777bb4;">
+                            <span class="skill-name">PHP</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="skills-category">
-                <h3>Frameworks</h3>
-                <div class="skills-grid-circles">
-                     <div class="skill-card" style="--skill-color: #000000">
-                        <span class="skill-name">Symfony</span>
+            <div class="skills-category text-center mb-5">
+                <h3 class="mb-4 text-muted fs-4">Frameworks</h3>
+                <div class="row justify-content-center g-4">
+                    <div class="col-auto">
+                         <div class="skill-card" style="--skill-color: #000000">
+                            <span class="skill-name">Symfony</span>
+                        </div>
                     </div>
-                    <div class="skill-card" style="--skill-color: #6cc24a;">
-                        <span class="skill-name">Node.js</span>
+                    <div class="col-auto">
+                        <div class="skill-card" style="--skill-color: #6cc24a;">
+                            <span class="skill-name">Node.js</span>
+                        </div>
                     </div>
-                     <div class="skill-card" style="--skill-color: #02569b;">
-                        <span class="skill-name">Flutter</span>
-                    </div>
-                </div>
-            </div>
-
-             <div class="skills-category">
-                <h3>Outils & Système</h3>
-                <div class="skills-grid-circles">
-                     <div class="skill-card" style="--skill-color: #fcc624;">
-                        <span class="skill-name">Linux</span>
-                    </div>
-                    <div class="skill-card" style="--skill-color: #003b57;">
-                        <span class="skill-name">SQL</span>
+                    <div class="col-auto">
+                         <div class="skill-card" style="--skill-color: #02569b;">
+                            <span class="skill-name">Flutter</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div style="text-align: center; margin-top: 3rem;">
+             <div class="skills-category text-center mb-5">
+                <h3 class="mb-4 text-muted fs-4">Outils & Système</h3>
+                <div class="row justify-content-center g-4">
+                    <div class="col-auto">
+                         <div class="skill-card" style="--skill-color: #fcc624;">
+                            <span class="skill-name">Linux</span>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="skill-card" style="--skill-color: #003b57;">
+                            <span class="skill-name">SQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
                 <a href="{{ path('app_competences') }}" class="btn btn-outline">Voir toutes mes compétences &rarr;</a>
             </div>
 
@@ -76,62 +94,68 @@
     </section>
 
     <!-- PROJECTS SECTION -->
-    <section id="projets" class="section-padding" style="background-color: var(--bg-alt);">
+    <section id="projets" class="py-5" style="background-color: var(--bg-alt);">
         <div class="container">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 3rem;">Projets Récents</h2>
+            <h2 class="section-title text-center mb-5">Projets Récents</h2>
 
-            <div class="projects-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem;">
+            <div class="row g-4">
                 {% for project in projects %}
-                    <article class="project-card" style="background: var(--bg-body); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); transition: transform 0.3s ease;">
-                        <div class="project-image" style="height: 200px; background-color: #2d2d2d; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                            {% if project.image %}
-                                <img src="{{ asset(project.image) }}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
-                            {% else %}
-                                <span style="color: var(--text-muted);">{{ project.title }}</span>
-                            {% endif %}
-                        </div>
-                        <div class="project-content" style="padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;">
-                             <div class="project-tags" style="display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
-                                {% if project.technologies %}
-                                    {% for tech in project.technologies|split(',') %}
-                                        <span style="font-size: 0.8rem; padding: 0.2rem 0.6rem; background: rgba(168, 85, 247, 0.1); color: var(--accent); border-radius: 4px;">{{ tech|trim }}</span>
-                                    {% endfor %}
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <article class="project-card d-flex flex-column h-100" style="background: var(--bg-body); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); transition: transform 0.3s ease;">
+                            <div class="project-image position-relative" style="height: 200px; background-color: #2d2d2d; overflow: hidden;">
+                                {% if project.image %}
+                                    <img src="{{ asset(project.image) }}" alt="{{ project.title }}" class="w-100 h-100 object-fit-cover">
+                                {% else %}
+                                    <div class="d-flex align-items-center justify-content-center h-100">
+                                        <span class="text-muted">{{ project.title }}</span>
+                                    </div>
                                 {% endif %}
                             </div>
-                            <h3 style="margin-bottom: 0.5rem;">{{ project.title }}</h3>
-                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; flex-grow: 1;">
-                                {{ project.description|striptags|slice(0, 100) ~ (project.description|length > 100 ? '...' : '') }}
-                            </p>
-                            
-                            <div style="margin-top: auto; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-                                <a href="{{ path('app_project_show', {'id': project.id}) }}" style="color: var(--text-main); font-weight: 500; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--border-color); padding: 0.3rem 0.6rem; border-radius: 4px; transition: all 0.2s ease;">
-                                    Détails &rarr;
-                                </a>
-                                {% if project.link %}
-                                    <a href="{{ project.link }}" target="_blank" style="color: var(--accent); font-weight: 500; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.5rem;">
-                                        Lien final &rarr;
+                            <div class="project-content p-4 d-flex flex-column flex-grow-1">
+                                 <div class="project-tags d-flex flex-wrap gap-2 mb-3">
+                                    {% if project.technologies %}
+                                        {% for tech in project.technologies|split(',') %}
+                                            <span class="badge" style="background: rgba(168, 85, 247, 0.1); color: var(--accent); font-weight: 500;">{{ tech|trim }}</span>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <h3 class="mb-2 fs-4">{{ project.title }}</h3>
+                                <p class="text-muted small mb-4 flex-grow-1">
+                                    {{ project.description|striptags|slice(0, 100) ~ (project.description|length > 100 ? '...' : '') }}
+                                </p>
+                                
+                                <div class="mt-auto d-flex align-items-center flex-wrap gap-3">
+                                    <a href="{{ path('app_project_show', {'id': project.id}) }}" class="text-decoration-none text-light d-inline-flex align-items-center gap-2 border rounded px-3 py-1 fw-medium" style="border-color: var(--border-color) !important; font-size: 0.85rem;">
+                                        Détails &rarr;
                                     </a>
-                                {% endif %}
+                                    {% if project.link %}
+                                        <a href="{{ project.link }}" target="_blank" class="text-decoration-none d-inline-flex align-items-center gap-2 fw-medium" style="color: var(--accent); font-size: 0.85rem;">
+                                            Lien final &rarr;
+                                        </a>
+                                    {% endif %}
+                                </div>
                             </div>
-                        </div>
-                    </article>
+                        </article>
+                    </div>
                 {% else %}
-                     <p style="color: var(--text-muted); text-align: center; grid-column: 1 / -1;">Aucun projet récent trouvé.</p>
+                     <div class="col-12">
+                         <p class="text-muted text-center">Aucun projet récent trouvé.</p>
+                     </div>
                 {% endfor %}
             </div>
 
-            <div style="text-align: center; margin-top: 3rem;">
+            <div class="text-center mt-5">
                 <a href="{{ path('app_project') }}" class="btn btn-outline">Voir tous les projets &rarr;</a>
             </div>
         </div>
     </section>
 
     <!-- CONTACT / FOOTER CALLOUT -->
-    <section id="contact" class="section-padding" style="text-align: center;">
+    <section id="contact" class="py-5 text-center">
         <div class="container">
-            <h2 style="margin-bottom: 1rem;">Prêt à collaborer ?</h2>
-            <p style="color: var(--text-muted); margin-bottom: 2rem;">Je suis disponible pour discuter de vos projets ou d'opportunités de carrière.</p>
-            <a href="mailto:Barnezet905@gmail.com" class="btn btn-primary">Me Contacter</a>
+            <h2 class="mb-3">Prêt à collaborer ?</h2>
+            <p class="text-muted mb-4 pb-2">Je suis disponible pour discuter de vos projets ou d'opportunités de carrière.</p>
+            <a href="mailto:Barnezet905@gmail.com" class="btn btn-primary px-4 py-2">Me Contacter</a>
         </div>
     </section>
 {% endblock %}
