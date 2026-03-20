@@ -567,108 +567,6 @@ footer .container {
     text-align: left;
 }
 
-
-/* --- LIGHT MODE --- */
-:root[data-theme="light"] {
-    /* Harmonized Light Palette (Warmer & Richer) */
-    --bg-body: #fafafa;
-    /* Warm Off-White */
-    --bg-card: #ffffff;
-    /* Pure White */
-    --bg-nav: #ffffff;
-    /* Solid White */
-    --text-main: #27272a;
-    /* Zinc 800 */
-    --text-muted: #71717a;
-    /* Zinc 500 */
-    --border-color: rgba(0, 0, 0, 0.06);
-    --skill-card-bg: #ffffff;
-
-    /* Override Accent for better contrast on white */
-    --accent: #7e22ce;
-    /* Rich Violet */
-    --accent-hover: #9333ea;
-
-    --bg-alt: #f1f5f9;
-    /* Slate 100 for Light Mode Alt Sections */
-
-    --bg-footer: #ffffff;
-}
-
-/* Enhancements for Light Mode Card Depth */
-:root[data-theme="light"] .glass-card,
-:root[data-theme="light"] .project-card,
-:root[data-theme="light"] .skill-card {
-    background: #ffffff !important;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-    /* Softer shadows */
-    border: 1px solid rgba(0, 0, 0, 0.04);
-}
-
-:root[data-theme="light"] .skill-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
-}
-
-/* --- THEME TOGGLE --- */
-.theme-toggle-wrapper {
-    display: flex;
-    align-items: center;
-    margin-left: 1rem;
-}
-
-.theme-toggle {
-    opacity: 0;
-    position: absolute;
-}
-
-.theme-toggle-label {
-    background-color: #111;
-    width: 50px;
-    height: 26px;
-    border-radius: 50px;
-    position: relative;
-    padding: 5px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid var(--border-color);
-}
-
-.theme-toggle-label .fa-moon {
-    color: #f1c40f;
-    font-size: 14px;
-}
-
-.theme-toggle-label .fa-sun {
-    color: #f39c12;
-    font-size: 14px;
-}
-
-.theme-toggle-ball {
-    background-color: #fff;
-    width: 22px;
-    height: 22px;
-    position: absolute;
-    left: 2px;
-    top: 2px;
-    border-radius: 50%;
-    transition: transform 0.2s linear;
-}
-
-.theme-toggle:checked+.theme-toggle-label .theme-toggle-ball {
-    transform: translateX(24px);
-}
-
-/* Explicitly hide canvas in light mode if desired, or let it adapt */
-:root[data-theme="light"] #canvas-container {
-    opacity: 0.2;
-    /* Make particles subtle in light mode */
-    filter: invert(1);
-    /* Invert particles to be dark on light bg */
-}
-
 /* --- MOBILE NAVIGATION --- */
 .mobile-menu-btn {
     display: none;
@@ -711,12 +609,6 @@ footer .container {
     .nav-links a {
         font-size: 1.5rem;
         font-weight: 600;
-    }
-
-    .theme-toggle-wrapper {
-        margin-left: 0;
-        transform: scale(1.3);
-        margin-top: 1rem;
     }
 }
 

@@ -20,7 +20,7 @@
             {{ importmap('app') }}
         {% endblock %}
     </head>
-    <body data-controller="theme" class="d-flex flex-column min-vh-100" data-theme="dark" data-bs-theme="dark">
+    <body class="d-flex flex-column min-vh-100" data-theme="dark" data-bs-theme="dark">
         <div id="canvas-container" data-controller="particle-background"></div>
 
         <header>
@@ -37,15 +37,6 @@
                         <a href="{{ path('app_parcours') }}" class="{{ app.request.attributes.get('_route') == 'app_parcours' ? 'active' : '' }}" data-action="click->mobile-menu#closeOnNavigate">Parcours</a>
                         <a href="{{ path('app_about') }}" class="{{ app.request.attributes.get('_route') == 'app_about' ? 'active' : '' }}" data-action="click->mobile-menu#closeOnNavigate">À propos</a>
                         <a href="{{ asset('cv_FR.pdf') }}" target="_blank" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.9rem;" data-action="click->mobile-menu#closeOnNavigate">CV</a>
-
-                        <div class="theme-toggle-wrapper">
-                            <input type="checkbox" class="theme-toggle" id="chk" data-action="change->theme#toggle">
-                            <label class="theme-toggle-label" for="chk">
-                                <i class="fas fa-moon"></i>
-                                <i class="fas fa-sun"></i>
-                                <div class="theme-toggle-ball"></div>
-                            </label>
-                        </div>
                     </div>
                 </nav>
             </div>
