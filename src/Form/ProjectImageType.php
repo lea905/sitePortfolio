@@ -14,7 +14,7 @@ class ProjectImageType extends AbstractType
     {
         $builder
             ->add('imageName', TextType::class, [
-                'label' => 'Nom de l\'image (ex: screenshot1.png)',
+                'label' => 'Nom de l\'image (ex: img/projet1.jpg)',
                 'attr' => ['placeholder' => 'screenshot1.png']
             ])
         ;

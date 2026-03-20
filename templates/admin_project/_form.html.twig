@@ -30,7 +30,7 @@
     </div>
 
     <div style="margin-bottom: 1.5rem;">
-        {{ form_label(form.image, 'URL Image principal (ex: img/projet1.jpg)', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_label(form.image, 'URL Image principal', {'label_attr': {'class': 'form-label'}}) }}
         {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
         <div style="color: #fca5a5; font-size: 0.85rem; margin-top: 0.5rem;">{{ form_errors(form.image) }}</div>
     </div>
@@ -69,4 +69,5 @@
     </div>
 
     <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">{{ button_label|default('Sauvegarder') }}</button>
-{{ form_end(form) }}
+{#{{ form_end(form) }}#}
+{{ form_end(form, {'render_rest': false}) }}
