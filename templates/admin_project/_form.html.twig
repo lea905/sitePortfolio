@@ -30,18 +30,18 @@
     </div>
 
     <div style="margin-bottom: 1.5rem;">
-        {{ form_label(form.image, 'URL Image (ex: img/projet1.jpg)', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_label(form.image, 'URL Image principal (ex: img/projet1.jpg)', {'label_attr': {'class': 'form-label'}}) }}
         {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
         <div style="color: #fca5a5; font-size: 0.85rem; margin-top: 0.5rem;">{{ form_errors(form.image) }}</div>
     </div>
 
-    {# <div style="margin-bottom: 2rem;">
-        <h3 class="text-light fs-4 mb-4">Images de la galerie</h3>
-        
+    <div style="margin-bottom: 2rem;">
+        <h3 class="text-light fs-4 mb-4">Images de la galerie (ex: img/projet1.jpg)</h3>
+
         <div data-controller="collection"
              data-collection-index-value="{{ form.images|length }}"
              data-collection-prototype-value="{{ form_widget(form.images.vars.prototype)|e('html_attr') }}">
-            
+
             <div data-collection-target="container">
                 {% for imageField in form.images %}
                     <div class="collection-item mb-3 p-3 glass-card d-flex align-items-center gap-3">
@@ -60,7 +60,7 @@
             </button>
         </div>
         <div style="color: #fca5a5; font-size: 0.85rem; margin-top: 0.5rem;">{{ form_errors(form.images) }}</div>
-    </div> #}
+    </div>
 
     <div style="margin-bottom: 1.5rem;">
         {{ form_label(form.link, 'Lien (facultatif)', {'label_attr': {'class': 'form-label'}}) }}

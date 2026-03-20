@@ -24,15 +24,15 @@ class ProjectType extends AbstractType
                 'attr' => ['placeholder' => 'ex: Symfony, React, Docker']
             ])
             ->add('duration')
-            ->add('duration')
-            /* ->add('images', CollectionType::class, [
+            ->add('images', CollectionType::class, [
                 'entry_type' => ProjectImageType::class,
                 'entry_options' => ['label' => false],
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,
-                'label' => 'Images supplémentaires (Galerie)'
-            ]) */
+                'label' => 'Images supplémentaires (Galerie)',
+                'prototype' => true,
+            ])
         ;
     }
 

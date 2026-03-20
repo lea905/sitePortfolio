@@ -48,7 +48,7 @@
                         <h3 class="text-light mb-4 fs-3 fw-bold">Description</h3>
                         <div class="text-muted fs-5 lh-lg mb-5" style="white-space: pre-wrap;">{{ project.description }}</div>
 
-                        {# {% if project.images|length > 0 %}
+                        {% if project.images is defined and project.images|length > 0 %}
                             <h3 class="text-light mb-4 fs-3 fw-bold">Galerie</h3>
                             <div class="row g-4 mb-5">
                                 {% for image in project.images %}
@@ -73,7 +73,7 @@
                                     </div>
                                 {% endfor %}
                             </div>
-                        {% endif %} #}
+                        {% endif %}
 
                         {% if project.link %}
                             <div class="mt-4">
