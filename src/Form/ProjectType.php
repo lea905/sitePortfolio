@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Project;
+use App\Form\ProjectImageType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,14 +24,15 @@ class ProjectType extends AbstractType
                 'attr' => ['placeholder' => 'ex: Symfony, React, Docker']
             ])
             ->add('duration')
-            ->add('images', CollectionType::class, [
+            ->add('duration')
+            /* ->add('images', CollectionType::class, [
                 'entry_type' => ProjectImageType::class,
                 'entry_options' => ['label' => false],
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,
                 'label' => 'Images supplémentaires (Galerie)'
-            ])
+            ]) */
         ;
     }
 

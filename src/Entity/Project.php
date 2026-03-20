@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\ProjectImage;
 use App\Repository\ProjectRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -37,7 +38,7 @@ class Project
     /**
      * @var Collection<int, ProjectImage>
      */
-    #[ORM\OneToMany(mappedBy: 'project', targetEntity: ProjectImage::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'project', targetEntity: 'App\Entity\ProjectImage', cascade: ['persist', 'remove'], orphanRemoval: true)]
     private Collection $images;
 
     public function __construct()
