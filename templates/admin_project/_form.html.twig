@@ -35,6 +35,33 @@
         <div style="color: #fca5a5; font-size: 0.85rem; margin-top: 0.5rem;">{{ form_errors(form.image) }}</div>
     </div>
 
+    <div style="margin-bottom: 2rem;">
+        <h3 class="text-light fs-4 mb-4">Images de la galerie</h3>
+        
+        <div data-controller="collection"
+             data-collection-index-value="{{ form.images|length }}"
+             data-collection-prototype-value="{{ form_widget(form.images.vars.prototype)|e('html_attr') }}">
+            
+            <div data-collection-target="container">
+                {% for imageField in form.images %}
+                    <div class="collection-item mb-3 p-3 glass-card d-flex align-items-center gap-3">
+                        <div class="flex-grow-1">
+                            {{ form_widget(imageField.imageName, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <button type="button" class="btn btn-outline-danger btn-sm" data-action="collection#remove">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <button type="button" class="btn btn-outline-info btn-sm mt-2" data-action="collection#add">
+                <i class="fas fa-plus me-2"></i> Ajouter une image à la galerie
+            </button>
+        </div>
+        <div style="color: #fca5a5; font-size: 0.85rem; margin-top: 0.5rem;">{{ form_errors(form.images) }}</div>
+    </div>
+
     <div style="margin-bottom: 1.5rem;">
         {{ form_label(form.link, 'Lien (facultatif)', {'label_attr': {'class': 'form-label'}}) }}
         {{ form_widget(form.link, {'attr': {'class': 'form-control'}}) }}

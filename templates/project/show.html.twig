@@ -48,6 +48,33 @@
                         <h3 class="text-light mb-4 fs-3 fw-bold">Description</h3>
                         <div class="text-muted fs-5 lh-lg mb-5" style="white-space: pre-wrap;">{{ project.description }}</div>
 
+                        {% if project.images|length > 0 %}
+                            <h3 class="text-light mb-4 fs-3 fw-bold">Galerie</h3>
+                            <div class="row g-4 mb-5">
+                                {% for image in project.images %}
+                                    <div class="col-12 col-md-6 col-lg-4">
+                                        <div class="gallery-item glass-card overflow-hidden" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#imageModal{{ loop.index }}">
+                                            <img src="{{ asset(image.imageName) }}" alt="Image {{ loop.index }} pour {{ project.title }}" class="img-fluid w-100 object-fit-cover" style="height: 250px; transition: transform 0.3s ease;">
+                                        </div>
+                                    </div>
+
+                                    <!-- Modal for each image -->
+                                    <div class="modal fade" id="imageModal{{ loop.index }}" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog modal-xl modal-dialog-centered">
+                                            <div class="modal-content bg-dark border-0">
+                                                <div class="modal-header border-0">
+                                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body p-0 text-center">
+                                                    <img src="{{ asset(image.imageName) }}" alt="Image {{ loop.index }}" class="img-fluid">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
                         {% if project.link %}
                             <div class="mt-4">
                                 <a href="{{ project.link }}" target="_blank" class="btn btn-primary btn-lg d-inline-flex align-items-center gap-2 px-4 py-3">
