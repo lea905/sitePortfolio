@@ -167,4 +167,17 @@ class Project
 
         return $this;
     }
+
+    private ?\Symfony\Component\HttpFoundation\File\File $imageFile = null;
+
+    public function getImageFile(): ?\Symfony\Component\HttpFoundation\File\File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(?\Symfony\Component\HttpFoundation\File\File $imageFile): static
+    {
+        $this->imageFile = $imageFile;
+        return $this;
+    }
 }

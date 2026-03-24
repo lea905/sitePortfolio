@@ -30,13 +30,13 @@
     </div>
 
     <div style="margin-bottom: 1.5rem;">
-        {{ form_label(form.image, 'URL Image principal', {'label_attr': {'class': 'form-label'}}) }}
-        {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
-        <div style="color: #fca5a5; font-size: 0.85rem; margin-top: 0.5rem;">{{ form_errors(form.image) }}</div>
+        {{ form_label(form.imageFile, 'Image principale (fichier)', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.imageFile, {'attr': {'class': 'form-control', 'accept': 'image/*'}}) }}
+        <div style="color: #fca5a5; font-size: 0.85rem; margin-top: 0.5rem;">{{ form_errors(form.imageFile) }}</div>
     </div>
 
     <div style="margin-bottom: 2rem;">
-        <h3 class="text-light fs-4 mb-4">Images de la galerie (ex: img/projet1.jpg)</h3>
+        <h3 class="text-light fs-4 mb-4">Images de la galerie (fichiers)</h3>
 
         <div data-controller="collection"
              data-collection-index-value="{{ form.images|length }}"
@@ -46,7 +46,7 @@
                 {% for imageField in form.images %}
                     <div class="collection-item mb-3 p-3 glass-card d-flex align-items-center gap-3">
                         <div class="flex-grow-1">
-                            {{ form_widget(imageField.imageName, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_widget(imageField.file, {'attr': {'class': 'form-control', 'accept': 'image/*'}}) }}
                         </div>
                         <button type="button" class="btn btn-outline-danger btn-sm" data-action="collection#remove">
                             <i class="fas fa-trash"></i>
@@ -68,6 +68,8 @@
         <div style="color: #fca5a5; font-size: 0.85rem; margin-top: 0.5rem;">{{ form_errors(form.link) }}</div>
     </div>
 
+    {# Render the CSRF token since render_rest is false #}
+    {{ form_widget(form._token) }}
+    
     <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;">{{ button_label|default('Sauvegarder') }}</button>
-{#{{ form_end(form) }}#}
 {{ form_end(form, {'render_rest': false}) }}

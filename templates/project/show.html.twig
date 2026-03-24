@@ -53,20 +53,23 @@
                             <div class="row g-4 mb-5">
                                 {% for image in project.images %}
                                     <div class="col-12 col-md-6 col-lg-4">
-                                        <div class="gallery-item glass-card overflow-hidden" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#imageModal{{ loop.index }}">
-                                            <img src="{{ asset(image.imageName) }}" alt="Image {{ loop.index }} pour {{ project.title }}" class="img-fluid w-100 object-fit-cover" style="height: 250px; transition: transform 0.3s ease;">
+                                        <div class="gallery-item glass-card position-relative overflow-hidden" style="cursor: pointer; border-radius: 16px; aspect-ratio: 4/3;" data-bs-toggle="modal" data-bs-target="#imageModal{{ loop.index }}">
+                                            <img src="{{ asset(image.imageName) }}" alt="Image {{ loop.index }} pour {{ project.title }}" class="img-fluid w-100 h-100 object-fit-cover shadow-sm" style="transition: transform 0.5s ease;">
+                                            <div class="gallery-overlay position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center" style="background: rgba(168, 85, 247, 0.15); opacity: 0; transition: opacity 0.4s ease; backdrop-filter: blur(3px);">
+                                                <i class="fas fa-expand text-white border border-white rounded-circle d-flex justify-content-center align-items-center" style="width: 50px; height: 50px; font-size: 1.2rem; background: rgba(0,0,0,0.3); transform: translateY(20px); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);"></i>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <!-- Modal for each image -->
-                                    <div class="modal fade" id="imageModal{{ loop.index }}" tabindex="-1" aria-hidden="true">
+                                    <div class="modal fade" id="imageModal{{ loop.index }}" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
                                         <div class="modal-dialog modal-xl modal-dialog-centered">
-                                            <div class="modal-content bg-dark border-0">
-                                                <div class="modal-header border-0">
-                                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <div class="modal-content bg-transparent border-0 shadow-none">
+                                                <div class="modal-header border-0 position-absolute top-0 end-0 z-3" style="padding: 1rem;">
+                                                    <button type="button" class="btn-close custom-modal-close shadow-lg" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body p-0 text-center">
-                                                    <img src="{{ asset(image.imageName) }}" alt="Image {{ loop.index }}" class="img-fluid">
+                                                    <img src="{{ asset(image.imageName) }}" alt="Image {{ loop.index }}" class="img-fluid rounded-4 shadow-lg" style="max-height: 90vh; object-fit: contain;">
                                                 </div>
                                             </div>
                                         </div>

@@ -25,6 +25,29 @@ final class AdminProjectController extends AbstractController
         ]);
     }
 
+    private function handleProjectUploads(Project $project): void
+    {
+        $uploadDir = $this->getParameter('kernel.project_dir') . '/public/img/projects';
+        
+        $mainImageFile = $project->getImageFile();
+        if ($mainImageFile) {
+            $newFilename = uniqid().'.'.$mainImageFile->guessExtension();
+            $mainImageFile->move($uploadDir, $newFilename);
+            $project->setImage('img/projects/'.$newFilename);
+        }
+        
+        foreach ($project->getImages() as $projectImage) {
+            $file = $projectImage->getFile();
+            if ($file) {
+                $newFilename = uniqid().'.'.$file->guessExtension();
+                $file->move($uploadDir, $newFilename);
+                $projectImage->setImageName('img/projects/'.$newFilename);
+            } elseif (!$projectImage->getId() && !$projectImage->getImageName()) {
+                $project->removeImage($projectImage);
+            }
+        }
+    }
+
     #[Route('/new', name: 'app_admin_project_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -33,6 +56,7 @@ final class AdminProjectController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->handleProjectUploads($project);
             $entityManager->persist($project);
             $entityManager->flush();
 
@@ -60,6 +84,7 @@ final class AdminProjectController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $this->handleProjectUploads($project);
             $entityManager->flush();
 
             return $this->redirectToRoute('app_admin_project_index', [], Response::HTTP_SEE_OTHER);

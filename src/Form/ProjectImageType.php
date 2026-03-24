@@ -13,9 +13,21 @@ class ProjectImageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('imageName', TextType::class, [
-                'label' => 'Nom de l\'image (ex: img/projet1.jpg)',
-                'attr' => ['placeholder' => 'screenshot1.png']
+            ->add('file', \Symfony\Component\Form\Extension\Core\Type\FileType::class, [
+                'label' => 'Sélectionner une image',
+                'required' => false,
+                'constraints' => [
+                    new \Symfony\Component\Validator\Constraints\File(
+                        maxSize: '5M',
+                        mimeTypes: [
+                            'image/jpeg',
+                            'image/png',
+                            'image/gif',
+                            'image/webp'
+                        ],
+                        mimeTypesMessage: 'Veuillez uploader une image valide'
+                    )
+                ],
             ])
         ;
     }

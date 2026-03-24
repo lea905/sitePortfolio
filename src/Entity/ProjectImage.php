@@ -15,7 +15,7 @@ class ProjectImage
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $imageName = null;
+    private ?string $imageName = '';
 
     #[ORM\ManyToOne(inversedBy: 'images')]
     #[ORM\JoinColumn(nullable: false)]
@@ -47,6 +47,19 @@ class ProjectImage
     {
         $this->project = $project;
 
+        return $this;
+    }
+
+    private ?\Symfony\Component\HttpFoundation\File\File $file = null;
+
+    public function getFile(): ?\Symfony\Component\HttpFoundation\File\File
+    {
+        return $this->file;
+    }
+
+    public function setFile(?\Symfony\Component\HttpFoundation\File\File $file): static
+    {
+        $this->file = $file;
         return $this;
     }
 }

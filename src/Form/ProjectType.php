@@ -17,7 +17,22 @@ class ProjectType extends AbstractType
             ->add('title')
             ->add('description')
             ->add('contexte')
-            ->add('image')
+            ->add('imageFile', \Symfony\Component\Form\Extension\Core\Type\FileType::class, [
+                'label' => 'Image principale (fichier)',
+                'required' => false,
+                'constraints' => [
+                    new \Symfony\Component\Validator\Constraints\File(
+                        maxSize: '5M',
+                        mimeTypes: [
+                            'image/jpeg',
+                            'image/png',
+                            'image/gif',
+                            'image/webp'
+                        ],
+                        mimeTypesMessage: 'Veuillez uploader une image valide (JPEG, PNG, GIF, WEBP)'
+                    )
+                ],
+            ])
             ->add('link')
             ->add('technologies', null, [
                 'label' => 'Technologies (séparées par des virgules)',
