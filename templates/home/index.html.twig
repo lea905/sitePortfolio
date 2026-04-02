@@ -104,7 +104,11 @@
                         <article class="project-card d-flex flex-column h-100" style="background: var(--bg-body); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); transition: transform 0.3s ease;">
                             <div class="project-image position-relative" style="height: 200px; background-color: #2d2d2d; overflow: hidden;">
                                 {% if project.image %}
-                                    <img src="{{ asset(project.image) }}" alt="{{ project.title }}" class="w-100 h-100 object-fit-cover">
+                                    {% set main_img = project.image %}
+                                    {% if project.image and not project.image starts with 'http' and not project.image starts with '/' and not ('/' in project.image) %}
+                                        {% set main_img = 'img/projects/' ~ project.image %}
+                                    {% endif %}
+                                    <img src="{{ asset(main_img) }}" alt="{{ project.title }}" class="w-100 h-100 object-fit-cover">
                                 {% else %}
                                     <div class="d-flex align-items-center justify-content-center h-100">
                                         <span class="text-muted">{{ project.title }}</span>

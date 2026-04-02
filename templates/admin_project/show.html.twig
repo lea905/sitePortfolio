@@ -7,8 +7,12 @@
         <div class="glass-card" style="width: 100%; max-width: 800px; padding: 0; overflow: hidden;">
             
             {% if project.image %}
+                {% set admin_img_path = project.image %}
+                {% if project.image and not project.image starts with 'http' and not project.image starts with '/' %}
+                    {% set admin_img_path = '/' ~ project.image %}
+                {% endif %}
                 <div style="height: 300px; background-color: #1a1f35; position: relative; overflow: hidden;">
-                    <img src="{{ project.image }}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="{{ asset(admin_img_path) }}" alt="{{ project.title }}" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
             {% endif %}
 

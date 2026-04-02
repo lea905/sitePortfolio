@@ -25,23 +25,21 @@ final class AdminProjectController extends AbstractController
         ]);
     }
 
-    private function handleProjectUploads(Project $project): void
+    private function handleProjectUploads(Project $project, \App\Service\CloudinaryService $cloudinaryService): void
     {
-        $uploadDir = $this->getParameter('kernel.project_dir') . '/public/img/projects';
-        
+        // On vérifie s'il y a une image principale
         $mainImageFile = $project->getImageFile();
         if ($mainImageFile) {
-            $newFilename = uniqid().'.'.$mainImageFile->guessExtension();
-            $mainImageFile->move($uploadDir, $newFilename);
-            $project->setImage('img/projects/'.$newFilename);
+            $uploadedUrl = $cloudinaryService->uploadImage($mainImageFile);
+            $project->setImage($uploadedUrl);
         }
         
+        // On gère les images de la galerie
         foreach ($project->getImages() as $projectImage) {
             $file = $projectImage->getFile();
             if ($file) {
-                $newFilename = uniqid().'.'.$file->guessExtension();
-                $file->move($uploadDir, $newFilename);
-                $projectImage->setImageName('img/projects/'.$newFilename);
+                $uploadedUrl = $cloudinaryService->uploadImage($file);
+                $projectImage->setImageName($uploadedUrl);
             } elseif (!$projectImage->getId() && !$projectImage->getImageName()) {
                 $project->removeImage($projectImage);
             }
@@ -49,14 +47,14 @@ final class AdminProjectController extends AbstractController
     }
 
     #[Route('/new', name: 'app_admin_project_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, \App\Service\CloudinaryService $cloudinaryService): Response
     {
         $project = new Project();
         $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->handleProjectUploads($project);
+            $this->handleProjectUploads($project, $cloudinaryService);
             $entityManager->persist($project);
             $entityManager->flush();
 
@@ -78,13 +76,13 @@ final class AdminProjectController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_admin_project_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Project $project, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Project $project, EntityManagerInterface $entityManager, \App\Service\CloudinaryService $cloudinaryService): Response
     {
         $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->handleProjectUploads($project);
+            $this->handleProjectUploads($project, $cloudinaryService);
             $entityManager->flush();
 
             return $this->redirectToRoute('app_admin_project_index', [], Response::HTTP_SEE_OTHER);
