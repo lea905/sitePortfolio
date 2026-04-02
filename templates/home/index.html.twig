@@ -8,7 +8,7 @@
                 <p class="hero-subtitle lead text-muted mx-auto mb-4" style="max-width: 600px;">Bonjour, je suis Léa Barnezet</p>
                 <h1 class="display-3 fw-bold mb-3">Développeuse <span style="color: var(--accent);">Full Stack</span></h1>
                 <p class="hero-description text-muted mx-auto mb-5" style="max-width: 600px; font-size: 1.1rem;">
-                    Je conçois des applications web robustes et modernes. Actuellement à la recherche d’un stage de 7 à 10 semaines à Bourg-en-Bresse, Lyon ou dans ses alentours
+                    Je conçois des applications web robustes et modernes. Actuellement à la recherche d’une nouvelle opportunité en CDI ou CDD à Bourg-en-Bresse, Lyon ou dans ses alentours.
                 </p>
                 <div class="hero-actions d-flex justify-content-center gap-3 flex-wrap">
                     <a href="#projets" class="btn btn-primary px-4 py-2">Voir mes projets</a>
@@ -123,7 +123,7 @@
                                 <p class="text-muted small mb-4 flex-grow-1">
                                     {{ project.description|striptags|slice(0, 100) ~ (project.description|length > 100 ? '...' : '') }}
                                 </p>
-                                
+
                                 <div class="mt-auto d-flex align-items-center flex-wrap gap-3">
                                     <a href="{{ path('app_project_show', {'id': project.id}) }}" class="text-decoration-none text-light d-inline-flex align-items-center gap-2 border rounded px-3 py-1 fw-medium" style="border-color: var(--border-color) !important; font-size: 0.85rem;">
                                         Détails &rarr;
